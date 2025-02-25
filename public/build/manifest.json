@@ -1,0 +1,13 @@
+{
+  "resources/css/global.css": {
+    "file": "assets/global.css",
+    "src": "resources/css/global.css",
+    "isEntry": true
+  },
+  "resources/js/main.js": {
+    "file": "assets/main.js",
+    "name": "main",
+    "src": "resources/js/main.js",
+    "isEntry": true
+  }
+}

@@ -27,11 +27,7 @@
       @vite('resources/js/main.js')
   @endenv
   <script>
-    document.querySelectorAll("#navbar-toggle").forEach((element) => {
-        element.addEventListener("click", () => {
-            document.getElementById("navbar-menu-mobile").classList.toggle('hidden');
-        });
-    });
+    
 </script>
   @yield('scripts')
 </body>
