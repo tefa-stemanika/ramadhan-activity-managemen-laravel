@@ -34,16 +34,86 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium">1</td>
-                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">Tanggal</td>
-                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">Jenis Kegiatan</td>
-                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">Deskripsi Kegiatan</td>
-                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">Bukti Kegiatan</td>
-                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">Aksi</td>
-                    </tr>
+                    @foreach ($kegiatan as $key => $item)
+                        <tr>
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium">{{ $key + 1 }}</td>
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</td>
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->jenis_kegiatan }}</td>
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->deskripsi }}</td>
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                                <button data-photo="{{ asset($item->foto) }}" class="foto-kegiatan">
+                                    Foto Kegiatan
+                                </button>
+                            </td>
+                            <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
+                                <a href="#" class="text-[#0062FF] text-sm font-medium">Edit</a>
+                                <p>|</p>
+                                <a href="#" class="text-[#FF0000] text-sm font-medium">Hapus</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script>
+    function showPhotoPopup(photoUrl) {
+        // Buat elemen overlay
+        let overlay = document.createElement("div");
+        overlay.style.position = "fixed";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.width = "100%";
+        overlay.style.height = "100%";
+        overlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+        overlay.style.display = "flex";
+        overlay.style.alignItems = "center";
+        overlay.style.justifyContent = "center";
+        overlay.style.zIndex = "1000";
+
+        // Buat elemen gambar
+        let img = document.createElement("img");
+        img.src = photoUrl;
+        img.style.maxWidth = "80%";
+        img.style.maxHeight = "80%";
+        img.style.borderRadius = "10px";
+        img.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+
+        // Buat tombol close
+        let closeButton = document.createElement("button");
+        closeButton.innerText = "✖";
+        closeButton.style.position = "absolute";
+        closeButton.style.top = "20px";
+        closeButton.style.right = "20px";
+        closeButton.style.background = "white";
+        closeButton.style.border = "none";
+        closeButton.style.padding = "10px";
+        closeButton.style.borderRadius = "50%";
+        closeButton.style.cursor = "pointer";
+        closeButton.onclick = function () {
+            document.body.removeChild(overlay);
+        };
+
+        // Tambahkan elemen ke overlay
+        overlay.appendChild(img);
+        overlay.appendChild(closeButton);
+        
+        // Tambahkan overlay ke body
+        document.body.appendChild(overlay);
+    }
+
+    // Tambahkan event listener ke semua tombol "Foto Kegiatan"
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("button.foto-kegiatan").forEach(button => {
+            button.addEventListener("click", function () {
+                let photoUrl = this.getAttribute("data-photo");
+                showPhotoPopup(photoUrl);
+            });
+        });
+    });
+
+    </script>
 @endsection

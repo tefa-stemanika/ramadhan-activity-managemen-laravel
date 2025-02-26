@@ -6,7 +6,7 @@
         ],
         [
             'display' => 'Isi Kegiatan',
-            'link' => '/siswa/kegiatan/insert',
+            'link' => '/siswa/kegiatan/create',
         ],
         [
             'display' => 'Rekap Kegiatan',

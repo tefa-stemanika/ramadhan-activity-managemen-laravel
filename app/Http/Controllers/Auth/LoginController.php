@@ -1,25 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\Siswa;
+namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pages.siswa.home');
+        return view('pages.auth.login');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function signin(Request $request)
     {
-        //
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+
+
+        $remember_me = $request->remember === "on" ? true : false;
+
+        if (auth()->attempt($credentials, $remember_me)) {
+            switch (auth()->user()->role) {
+                case 'admin':
+                    return redirect()->route('admin.home');
+
+                case 'siswa':
+                    return redirect()->route('siswa.home');
+            }
+        } else {
+            $request->flashOnly('username');
+
+            notify()->error('username atau password yang anda masukan tidak sesuai', 'Login failed');
+
+            return back();
+        }
     }
 
     /**
