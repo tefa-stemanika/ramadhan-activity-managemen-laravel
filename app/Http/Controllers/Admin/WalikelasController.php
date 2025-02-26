@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Siswa;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class WalikelasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pages.siswa.home');
+        return view('pages.admin.walikelas.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.walikelas.create');
     }
 
     /**

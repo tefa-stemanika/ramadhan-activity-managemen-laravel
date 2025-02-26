@@ -9,11 +9,11 @@ class KegiatanController extends Controller
 {
     public function index()
     {
-        return view('siswa.kegiatan.index');
+        return view('pages.siswa.kegiatan.index');
     }
 
     public function create()
     {
-        return view('siswa.kegiatan.insert');
+        return view('pages.siswa.kegiatan.insert');
     }
 }

@@ -12,7 +12,7 @@ class JadwalSholatController extends Controller
      */
     public function index()
     {
-        return view('siswa.jadwa-sholat');
+        return view('pages.siswa.jadwa-sholat');
     }
 
     /**
