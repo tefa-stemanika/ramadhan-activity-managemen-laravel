@@ -22,13 +22,16 @@
                         <p class="text-xs font-medium text-white">{{ $item->jenis_kegiatan }}</p>
                     </div>
                     <div class="grid grid-cols-1 col-span-4 p-5 bg-white border border-black/10 rounded-r-lg">
-                        <h3 class="text-sm font-semibold">{{ $item->jenis_kegiatan }}</h3>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-semibold">{{ $item->jenis_kegiatan }}</h3>
+                            <a onclick="return confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')" href="{{ route('siswa.kegiatan.destroy', $item) }}" class="text-red-500 text-sm font-medium">hapus</a>
+                        </div>
                         <p class="text-sm font-medium mt-2">{{ $item->deskripsi }}</p>
                         <div class="flex items-center gap-x-4 mt-2">
                             <img src="{{ asset('icons/uit_clock.svg') }}" alt="">
                             <time class="text-xs">{{ Carbon\Carbon::parse($item->created_at)->format('m:s') }}</time>
                         </div>
-                        <button data-photo="{{ asset($item->foto) }}" class="foto-kegiatan flex justify-center items-center px-2.5 py-[5px] text-xs font-semibold mt-5 text-[#6B18FF] bg-white border border-[#6B18FF] rounded-full">
+                        <button onclick="showPhotoPopup('{{ asset($item->foto) }}')" class="foto-kegiatan flex justify-center items-center px-2.5 py-[5px] text-xs font-semibold mt-5 text-[#6B18FF] bg-white border border-[#6B18FF] rounded-full">
                             Foto Kegiatan
                         </button>
                     </div>
@@ -36,64 +39,24 @@
             @endforeach
         </div>
     </section>
+
+    <div id="photoOverlay" class="hidden fixed z-50 top-0 left-0 w-full h-screen bg-black bg-opacity-70">
+        <div class="flex items-center justify-center relative h-full">
+            <img id="popupImage" class="max-w-[80%] max-h-[80%] rounded-lg shadow-2xl" src="" alt="Foto Kegiatan">
+            <button class="absolute flex items-center justify-center top-2 right-2 bg-white text-black p-2 aspect-square rounded-full shadow-md" onclick="closePhotoPopup()">✖</button>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
     <script>
-    function showPhotoPopup(photoUrl) {
-        // Buat elemen overlay
-        let overlay = document.createElement("div");
-        overlay.style.position = "fixed";
-        overlay.style.top = "0";
-        overlay.style.left = "0";
-        overlay.style.width = "100%";
-        overlay.style.height = "100%";
-        overlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-        overlay.style.display = "flex";
-        overlay.style.alignItems = "center";
-        overlay.style.justifyContent = "center";
-        overlay.style.zIndex = "1000";
-
-        // Buat elemen gambar
-        let img = document.createElement("img");
-        img.src = photoUrl;
-        img.style.maxWidth = "80%";
-        img.style.maxHeight = "80%";
-        img.style.borderRadius = "10px";
-        img.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-
-        // Buat tombol close
-        let closeButton = document.createElement("button");
-        closeButton.innerText = "✖";
-        closeButton.style.position = "absolute";
-        closeButton.style.top = "20px";
-        closeButton.style.right = "20px";
-        closeButton.style.background = "white";
-        closeButton.style.border = "none";
-        closeButton.style.padding = "10px";
-        closeButton.style.borderRadius = "50%";
-        closeButton.style.cursor = "pointer";
-        closeButton.onclick = function () {
-            document.body.removeChild(overlay);
-        };
-
-        // Tambahkan elemen ke overlay
-        overlay.appendChild(img);
-        overlay.appendChild(closeButton);
+        function showPhotoPopup(photoUrl) {
+            document.getElementById("popupImage").src = photoUrl;
+            document.getElementById("photoOverlay").classList.replace("hidden", "flex");
+        }
         
-        // Tambahkan overlay ke body
-        document.body.appendChild(overlay);
-    }
-
-    // Tambahkan event listener ke semua tombol "Foto Kegiatan"
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("button.foto-kegiatan").forEach(button => {
-            button.addEventListener("click", function () {
-                let photoUrl = this.getAttribute("data-photo");
-                showPhotoPopup(photoUrl);
-            });
-        });
-    });
-
+        function closePhotoPopup() {
+            document.getElementById("photoOverlay").classList.replace("flex", "hidden");
+        }
     </script>
 @endsection

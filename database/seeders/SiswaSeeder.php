@@ -25,7 +25,7 @@ class SiswaSeeder extends Seeder
                 'nis' => '345',
                 'nama' => 'siswa2',
                 'username' => '456',
-                'kode_kelas' => 'kelas2'
+                'kode_kelas' => 'kelas1'
             ],
         ];
 

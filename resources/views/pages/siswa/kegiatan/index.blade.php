@@ -48,7 +48,7 @@
                             <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
                                 <a href="#" class="text-[#0062FF] text-sm font-medium">Edit</a>
                                 <p>|</p>
-                                <a href="#" class="text-[#FF0000] text-sm font-medium">Hapus</a>
+                                <a onclick="return confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')" href="{{ route('siswa.kegiatan.destroy', $item) }}" class="text-[#FF0000] text-sm font-medium">Hapus</a>
                             </td>
                         </tr>
                     @endforeach

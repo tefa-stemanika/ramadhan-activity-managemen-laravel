@@ -20,9 +20,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    protected $guarded = ['id'];
-
-    protected $table = 'users';
+     protected $guarded = [
+        'id'
+    ];
 
     protected $keyType = "string";
 

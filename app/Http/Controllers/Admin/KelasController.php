@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\KelasCreateRequest;
+use App\Http\Requests\KelasUpdateRequest;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -12,7 +15,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.kelas.index');
+        return view('pages.admin.kelas.index', [
+            'data' => Kelas::orderBy('nama')->paginate(20)
+        ]);
     }
 
     /**
@@ -26,9 +31,13 @@ class KelasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(KelasCreateRequest $request)
     {
-        //
+        Kelas::create($request->validated());
+
+        notify()->success("Kelas telah berhasil dibuat");
+
+        return redirect()->route('kelas.index');
     }
 
     /**
@@ -42,24 +51,35 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, Kelas $kelas)
     {
-        //
+        dd($kelas);
+        return view('pages.admin.kelas.edit', [
+            'data' => $kelas
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(KelasUpdateRequest $request, Kelas $kelas)
     {
-        //
+        $kelas->update($request->validated());
+
+        notify()->success("Kelas telah berhasil diubah");
+
+        return redirect()->route('kelas.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, Kelas $kelas)
     {
-        //
+        $kelas->delete();
+
+        notify()->success("Kelas telah berhasil dihapus");
+
+        return redirect()->route('kelas.index');
     }
 }

@@ -17,13 +17,13 @@ class KegiatanSeeder extends Seeder
                 'nis' => '123',
                 'jenis_kegiatan' => 'Kegiatan pembukaan',
                 'deskripsi' => 'pembukaan',
-                'foto' => 'https://placehold.co/600x400'
+                'foto' => 'uploads/1740547427.png'
             ],
             [
                 'nis' => '123',
                 'jenis_kegiatan' => 'Shalat Fardu',
                 'deskripsi' => 'Shalat Fardu',
-                'foto' => 'https://placehold.co/600x400'
+                'foto' => 'uploads/1740547427.png'
             ],
         ];
 

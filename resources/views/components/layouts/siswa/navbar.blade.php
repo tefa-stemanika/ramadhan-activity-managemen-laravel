@@ -17,7 +17,7 @@
 
 <aside class="hidden fixed left-0 top-0 bottom-0 right-0 bg-black/40 z-50" id="navbar-menu-mobile">
     <div class="absolute left-0 top-0 bottom-0 right-24 bg-primary p-6 z-50">
-        <button class="text-lg font-bold text-white" id="navbar-toggle">X</button>
+        <button class="text-lg font-bold text-white" id="navbar-toggle">✖</button>
         <ul class="mt-7">
             @foreach ($menu as $item)
                 <li>
@@ -27,7 +27,7 @@
                 </li>
             @endforeach
             <li>
-                <a href="" class="block px-2 py-3 bg-transparent text-danger text-sm font-bold">Keluar</a>
+                <a onclick="return confirm('Apakah Anda yakin ingin keluar?')" href="{{ route('logout') }}" class="block px-2 py-3 bg-transparent text-danger text-sm font-bold">Keluar</a>
             </li>
         </ul>
     </div>

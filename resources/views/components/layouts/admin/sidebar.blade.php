@@ -54,7 +54,7 @@
                 </li>
             @endforeach
             <li class="w-full">
-                <a href="" class="flex items-center gap-3.5 px-5 py-2 w-full rounded-md bg-transparent text-primary">
+                <a href="{{ route('logout') }}" class="flex items-center gap-3.5 px-5 py-2 w-full rounded-md bg-transparent text-primary">
                     <img src="{{ asset('icons/map_mosque.svg') }}" width="24" height="24" alt="">
                     <p class="text-xl font-medium">
                         Logout

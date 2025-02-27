@@ -19,12 +19,6 @@ class KelasSeeder extends Seeder
                 'nama' => 'kelas1',
                 'username' => '123'
             ],
-            [
-                'id' => '2',
-                'kode' => 'kelas2',
-                'nama' => 'kelas2',
-                'username' => '456'
-            ],
         ];
 
         foreach ($data as $value) {

@@ -35,6 +35,15 @@ class KegiatanController extends Controller
         return redirect()->route('siswa.home');
     }
 
+    public function destroy(Kegiatan $kegiatan)
+    {
+        $kegiatan->delete();
+
+        notify()->success("Kegiatan telah berhasil dihapus");
+
+        return redirect()->back();
+    }
+
     public function store_image($file)
     {
         $extension = $file->getClientOriginalExtension();

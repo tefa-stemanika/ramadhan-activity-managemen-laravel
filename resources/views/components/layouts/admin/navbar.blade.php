@@ -27,7 +27,7 @@
                 </li>
             @endforeach
             <li>
-                <a href="" class="block px-2 py-3 bg-transparent text-danger text-sm font-bold">Keluar</a>
+                <a href="{{ route('logout') }}" class="block px-2 py-3 bg-transparent text-danger text-sm font-bold">Keluar</a>
             </li>
         </ul>
     </div>

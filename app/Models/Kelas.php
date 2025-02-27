@@ -10,15 +10,27 @@ class Kelas extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $guarded = ['id'];
+    protected $guarded = [
+        'id'
+    ];
 
-     protected $table = 'kelas';
+    protected $table = 'kelas';
 
     protected $keyType = "string";
-    
+
     protected $fillable = [
-        'nis',
+        'kode',
         'nama',
-        'kode_kelas'
+        'username'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'username', 'username');
+    }
+
+    public function Siswa()
+    {
+        return $this->hasMany(Siswa::class, 'kode_kelas', 'kode');
+    }
 }
