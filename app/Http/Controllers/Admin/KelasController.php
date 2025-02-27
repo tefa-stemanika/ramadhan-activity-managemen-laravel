@@ -53,7 +53,6 @@ class KelasController extends Controller
      */
     public function edit(Request $request, Kelas $kelas)
     {
-        dd($kelas);
         return view('pages.admin.kelas.edit', [
             'data' => $kelas
         ]);
