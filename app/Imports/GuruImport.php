@@ -51,7 +51,7 @@ class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFail
         return [
             '*.kode.unique' => ':attribute sudah digunakan oleh guru lain!',
             '*.kode.required' => ':attribute dibutuhkan!',
-            '*.username.unique' => ':attribute maksimal memiliki 255 karakter!',
+            '*.username.unique' => ':attribute sudah digunakan!',
             '*.nama.required' => ':attribute dibutuhkan!',
             '*.nama.max' => ':attribute maksimal memiliki 255 karakter!',
             '*.username.required' => ':attribute dibutuhkan!',
