@@ -65,5 +65,4 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/walikelas', [App\Http\Controllers\Admin\WalikelasController::class, 'import'])->name('walikelas.import');
         });
     });
-
 });
