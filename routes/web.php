@@ -33,11 +33,18 @@ Route::prefix('siswa')->middleware(['auth'])->group(function () {
     Route::get('/kegiatan/rekap', [App\Http\Controllers\Siswa\KegiatanController::class, 'index'])->name('siswa.kegiatan.rekap');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.home');
+    Route::prefix('kelas')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\KelasController::class, 'index'])->name('kelas.index');
+        Route::get('/create', [App\Http\Controllers\Admin\KelasController::class, 'create'])->name('kelas.create');
+        Route::get('/{kelas}/edit', [App\Http\Controllers\Admin\KelasController::class, 'edit'])->name('kelas.edit');
+        Route::post('/store', [App\Http\Controllers\Admin\KelasController::class, 'store'])->name('kelas.store');
+        Route::put('/{kelas}', [App\Http\Controllers\Admin\KelasController::class, 'update'])->name('kelas.update');
+        Route::delete('/{kelas}', [App\Http\Controllers\Admin\KelasController::class, 'destroy'])->name('kelas.destroy');
+    });
     Route::resources([
         'user' => App\Http\Controllers\Admin\UserController::class,
-        'kelas' => App\Http\Controllers\Admin\KelasController::class,
         'siswa' => App\Http\Controllers\Admin\SiswaController::class,
         'guru' => App\Http\Controllers\Admin\GuruController::class,
         'walikelas' => App\Http\Controllers\Admin\WalikelasController::class,

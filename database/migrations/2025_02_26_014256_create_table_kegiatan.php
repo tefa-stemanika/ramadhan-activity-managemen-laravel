@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('foto');
             $table->timestamps();
+
+            $table->foreign('nis')->references('nis')->on('siswa')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
