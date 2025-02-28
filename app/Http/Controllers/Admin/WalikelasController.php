@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Walikelas;
+use App\Imports\WalikelasImport;
 use App\Http\Requests\WalikelasCreateRequest;
 use App\Http\Requests\WalikelasUpdateRequest;
 
@@ -87,5 +88,19 @@ class WalikelasController extends Controller
 
         notify()->success('Walikelas berhasil dihapus');
         return redirect()->route('walikelas.index');
+    }
+
+    public function import(Request $request) {
+        $walas = new WalikelasImport();
+
+        $walas->import($request->excel);
+
+        if($walas->failures()->isNotEmpty()) {
+            return back()->withFailures($walas->failures());
+        }
+
+        notify()->success('Walikelas telah berhasil diimpor');
+
+        return back();
     }
 }
