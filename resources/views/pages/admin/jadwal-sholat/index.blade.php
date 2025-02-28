@@ -19,7 +19,19 @@
                 <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
                 <p class="text-sm font-bold">Tambah Jadwal</p>
             </a>
+            <button class="flex items-center gap-4 px-5 py-2 rounded bg-[#FCEE80]">
+                <p class="text-sm font-bold text-primary">Impor Data</p>
+            </button>
         </div>
+        <form class="flex items-center gap-2.5">
+            <div class="relative">
+                <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                <input type="search" name="q" value="{{ request('q') }}" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
+            </div>
+            <button type="button" class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
+                Cari
+            </button>
+        </form>
     </div>
     <div class="mt-5 overflow-x-scroll">
         <table class="min-w-full w-max">
@@ -27,8 +39,11 @@
                 <tr>
                     <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium">No.</th>
                     <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Tanggal</th>
+                    <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Imsak</th>
                     <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Subuh</th>
-                    <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Duhur</th>
+                    <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Terbit</th>
+                    <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Dhuha</th>
+                    <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Dzuhur</th>
                     <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Ashar</th>
                     <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Maghrib</th>
                     <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Isya</th>
@@ -40,7 +55,10 @@
                 <tr>
                     <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium text-center">{{ $loop->iteration }}</td>
                     <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['tanggal'] }}</td>
+                    <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['imsak'] }}</td>
                     <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['subuh'] }}</td>
+                    <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['terbit'] }}</td>
+                    <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['dhuha'] }}</td>
                     <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['dzuhur'] }}</td>
                     <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['ashar'] }}</td>
                     <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $jadwal['maghrib'] }}</td>

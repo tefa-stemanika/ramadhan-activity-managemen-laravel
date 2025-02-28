@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('jadwal_sholat', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->date('tanggal');
+            $table->time('imsak');
             $table->time('subuh');
+            $table->time('terbit');
+            $table->time('dhuha');
             $table->time('dzuhur');
             $table->time('ashar');
             $table->time('maghrib');

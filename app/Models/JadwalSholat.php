@@ -18,7 +18,10 @@ class JadwalSholat extends Model
 
     protected $fillable = [
         'tanggal',
+        'imsak',
         'subuh',
+        'terbit',
+        'dhuha',
         'dzuhur',
         'ashar',
         'maghrib',
