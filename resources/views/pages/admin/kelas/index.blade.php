@@ -23,6 +23,7 @@
                 </button>
             </form>
         </div>
+        @include('components.shared.tables.import-error')
         <div class="mt-5 overflow-x-scroll">
             <table class="min-w-full w-max">
                 <thead>
