@@ -27,8 +27,8 @@ class WalikelasImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
         return new Walikelas([
            'kode'       => $row['kode'],
             'nama'       => $row['nama'],
-            'kode_kelas' => $row['kode_kelas'] ?? null,
-            'username'   => $row['username'] ?? null,
+            'kode_kelas' => $row['kode_kelas'] ,
+            'username'   => $row['username'] ,
         ]);
     }
 
@@ -40,8 +40,8 @@ class WalikelasImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
         return [
             '*.kode' => ['required', 'string', 'unique:walikelas,kode'],
             '*.nama' => ['required', 'string', 'max:255'],
-            '*.kode_kelas' => ['nullable', 'string', 'exists:kelas,kode'],
-            '*.username' => ['nullable', 'string', 'exists:users,username'],
+            '*.kode_kelas' => ['required', 'string', 'exists:kelas,kode','unique:walikelas,kode_kelas'],
+            '*.username' => ['required', 'string', 'exists:users,username','unique:walikelas,username'],
         ];
     }
 
@@ -52,7 +52,10 @@ class WalikelasImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
             '*.nama.required' => 'Nama wajib diisi!',
             '*.nama.max' => 'Nama maksimal 255 karakter!',
             '*.kode_kelas.exists' => 'Kode kelas tidak ditemukan!',
+            '*.kode_kelas.required' => 'Kode Kelas wajib diisi!',
             '*.username.exists' => 'Username tidak ditemukan di tabel users!',
+            '*.username.required' => 'Username wajib diisi!'
+
         ];
     }
 }

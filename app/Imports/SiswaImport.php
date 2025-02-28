@@ -26,8 +26,8 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
         return new Siswa([
             'nis' => $row['nis'],
             'nama' => $row['nama'],
-            'username' => $row['username'] ?? null,
-            'kode_kelas' => $row['kode_kelas'] ?? null,
+            'username' => $row['username'] ,
+            'kode_kelas' => $row['kode_kelas'],
         ]);
     }
 
@@ -37,10 +37,10 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
 
     public function rules(): array {
         return [
-             '*.nis' => ['required', 'integer', 'digits_between:1,10', 'unique:siswa,nis'],
+            '*.nis' => ['required', 'integer', 'digits_between:1,10', 'unique:siswa,nis'],
             '*.nama' => ['required', 'string', 'max:255'],
-            '*.username' => ['nullable', 'string', 'exists:users,username'],
-            '*.kode_kelas' => ['nullable', 'string', 'exists:kelas,kode']
+            '*.username' => ['required', 'string', 'exists:users,username'],
+            '*.kode_kelas' => ['required', 'string', 'exists:kelas,kode']
         ];
     }
 
@@ -54,7 +54,9 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
             '*.nama.string' => 'Nama harus berupa teks!',
             '*.nama.max' => 'Nama maksimal 255 karakter!',
             '*.username.exists' => 'Username tidak ditemukan di tabel users!',
+            '*.username.required' => 'Username wajib diisi!',
             '*.kode_kelas.exists' => 'Kode kelas tidak ditemukan di tabel kelas!',
+            '*.kode_kelas.required' => 'Kode kelas wajib diisi!'
         ];
     }
 }
