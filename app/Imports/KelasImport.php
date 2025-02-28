@@ -40,22 +40,22 @@ class KelasImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
     public function rules(): array
     {
         return [
-            '*.kode' => ['required', 'max:255', 'unique:users,username'],
+            '*.kode' => ['required', 'max:255', 'unique:kelas,kode'],
             '*.nama' => ['required', 'max:255',],
-            '*.username' => ['required', 'in:siswa,guru,walikelas,admin']
+            '*.username' => ['required', 'exists:users,username']
         ];
     }
 
     public function customValidationMessages()
     {
         return [
-            '*.kode.unique' => ':attribute sudah digunakan oleh user lain!',
+            '*.kode.unique' => ':attribute sudah digunakan oleh kelas lain!',
             '*.kode.required' => ':attribute dibutuhkan!',
             '*.username.max' => ':attribute maksimal memiliki 255 karakter!',
             '*.nama.required' => ':attribute dibutuhkan!',
             '*.nama.max' => ':attribute maksimal memiliki 255 karakter!',
             '*.username.required' => ':attribute dibutuhkan!',
-            '*.username.in' => 'in:siswa,guru,walikelas,admin'
+            '*.username.exists' => ':attribute tidak ditemukan!'
         ];
     }
 }
