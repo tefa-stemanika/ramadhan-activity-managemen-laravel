@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KelasCreateRequest;
 use App\Http\Requests\KelasUpdateRequest;
+use App\Imports\KelasImport;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 
@@ -80,5 +81,20 @@ class KelasController extends Controller
         notify()->success("Kelas telah berhasil dihapus");
 
         return redirect()->route('kelas.index');
+    }
+
+    public function import(Request $request)
+    {
+        $kelas = new KelasImport();
+
+        $kelas->import($request->excel);
+
+        if ($kelas->failures()->isNotEmpty()) {
+            return back()->withFailures($kelas->failures());
+        }
+
+        notify()->success('User telah berhasil diimpor');
+
+        return back();
     }
 }
