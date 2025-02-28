@@ -41,5 +41,6 @@ Route::prefix('admin')->group(function () {
         'siswa' => App\Http\Controllers\Admin\SiswaController::class,
         'guru' => App\Http\Controllers\Admin\GuruController::class,
         'walikelas' => App\Http\Controllers\Admin\WalikelasController::class,
+        'jadwal-sholat' => \App\Http\Controllers\Admin\JadwalSholatController::class,
     ]);
 });
