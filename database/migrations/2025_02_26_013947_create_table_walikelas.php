@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('walikelas', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('kode')->unique();
             $table->string('nama');
-            $table->string('kode_kelas');
-            $table->string('username');
+            $table->string('username')->nullable()->unique();
+            $table->string('kode_kelas')->nullable()->unique();
+
+            $table->foreign('username')->references('username')->on('users')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreign('kode_kelas')->references('kode')->on('kelas')->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

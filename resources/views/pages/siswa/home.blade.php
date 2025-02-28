@@ -16,7 +16,7 @@
     <section class="mt-20">
         <h2 class="text-sm font-bold">Berikut kegiatan terbarumu hari ini.</h2>
         <div class="grid grid-cols-1 gap-3 mt-6">
-            @foreach (auth()->user()->Siswa->Kegiatan()->latest()->get() as $item)
+            @foreach (auth()->user()->Siswa->Kegiatan()->whereDate('created_at', now())->latest()->get() as $item)
                 <div class="grid grid-cols-5 rounded-lg">
                     <div class="flex items-center justify-center p-2.5 bg-warm rounded-l-lg">
                         <p class="text-xs font-medium text-white">{{ $item->jenis_kegiatan }}</p>
@@ -31,7 +31,7 @@
                             <img src="{{ asset('icons/uit_clock.svg') }}" alt="">
                             <time class="text-xs">{{ Carbon\Carbon::parse($item->created_at)->format('m:s') }}</time>
                         </div>
-                        <button onclick="showPhotoPopup('{{ asset($item->foto) }}')" class="foto-kegiatan flex justify-center items-center px-2.5 py-[5px] text-xs font-semibold mt-5 text-[#6B18FF] bg-white border border-[#6B18FF] rounded-full">
+                        <button onclick="showPhotoPopup('{{ $item->foto }}')" class="foto-kegiatan flex justify-center items-center px-2.5 py-[5px] text-xs font-semibold mt-5 text-[#6B18FF] bg-white border border-[#6B18FF] rounded-full">
                             Foto Kegiatan
                         </button>
                     </div>

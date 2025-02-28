@@ -29,9 +29,11 @@ return new class extends Migration
                 'Ngobras',
                 'Penutupan',
             ]);
-            $table->string('deskripsi');
-            $table->string('foto');
+            $table->string('deskripsi')->nullable();
+            $table->longText('foto');
             $table->timestamps();
+
+            $table->foreign('nis')->references('nis')->on('siswa')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

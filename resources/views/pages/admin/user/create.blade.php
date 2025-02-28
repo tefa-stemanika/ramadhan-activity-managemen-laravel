@@ -12,7 +12,7 @@
             </div>
             <div class="grid grid-cols-4 gap-3 items-center">
                 <label for="password" class="text-lg font-medium">Password</label>
-                <input type="password" name="password" id="password" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
+                <input typUe="password" name="password" id="password" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
                 <p class="col-start-2 text-red-500 text-sm">@error('password') {{ $message }} @enderror</p>
             </div>
             <div class="grid grid-cols-4 gap-3 items-center">
@@ -26,7 +26,7 @@
                 <p class="col-start-2 text-red-500 text-sm">@error('role') {{ $message }} @enderror</p>
             </div>
             <div class="flex items-center justify-end gap-4 pt-4">
-                <a href="{{ route('siswa.home') }}" class="bg-mist py-2 px-2.5 rounded text-white text-sm font-medium">Batal</a>
+                <a href="{{ route('user.index') }}" class="bg-mist py-2 px-2.5 rounded text-white text-sm font-medium">Batal</a>
                 <button type="submit" class="bg-primary py-2 px-2.5 rounded text-white text-sm font-medium">Simpan</button>
             </div>
         </form>

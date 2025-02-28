@@ -17,8 +17,19 @@ class Walikelas extends Model
     protected $keyType = "string";
 
     protected $fillable = [
+        'kode',
         'nama',
         'kode_kelas',
         'username'
     ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kode_kelas', 'kode');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'username', 'username');
+    }
 }

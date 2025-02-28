@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
+use App\Imports\UserImport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -57,7 +58,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        dd($user);
         return view('pages.admin.user.edit', [
             'data' => $user,
         ]);
@@ -96,5 +96,20 @@ class UserController extends Controller
         notify()->success("User telah berhasil dihapus");
 
         return redirect()->route('user.index');
+    }
+
+    public function import(Request $request)
+    {
+        $user = new UserImport();
+
+        $user->import($request->excel);
+
+        if ($user->failures()->isNotEmpty()) {
+            return back()->withFailures($user->failures());
+        }
+
+        notify()->success('User telah berhasil diimpor');
+
+        return back();
     }
 }

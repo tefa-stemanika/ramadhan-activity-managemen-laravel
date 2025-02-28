@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('nis');
+            $table->string('nis')->unique();
             $table->string('nama');
-            $table->string('username')->nullable();
+            $table->string('username')->nullable()->unique();
             $table->string('kode_kelas')->nullable();
 
             $table->foreign('username')->references('username')->on('users')->cascadeOnUpdate()->nullOnDelete();

@@ -9,9 +9,23 @@ use Illuminate\Http\Request;
 
 class KegiatanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $kegiatan = Kegiatan::where('nis', auth()->user()->Siswa->nis)->get();
+        $kegiatan = Kegiatan::where('nis', auth()->user()->Siswa->nis)
+            ->when($request->search, function ($query) use ($request) {
+                $query
+                    ->where('nis', 'like', '%' . $request->search . '%')
+                    ->orWhere('jenis_kegiatan', 'like', '%' . $request->search . '%')
+                    ->orWhere('deskripsi', 'like', '%' . $request->search . '%');
+            })
+            ->when($request->tanggal, function ($query) use ($request) {
+                $query
+                    ->whereDate('created_at', $request->tanggal);
+            })
+            ->latest()
+            ->get();
+
+            $request->flash();
 
         return view('pages.siswa.kegiatan.index', [
             'kegiatan' => $kegiatan
@@ -29,7 +43,7 @@ class KegiatanController extends Controller
             'nis' => auth()->user()->Siswa->nis,
             'jenis_kegiatan' => $request->jenis_kegiatan,
             'deskripsi' => $request->deskripsi,
-            'foto' => $this->store_image($request->file('foto')),
+            'foto' => $this->store_image_as_text($request->file('foto')),
         ]);
 
         return redirect()->route('siswa.home');
@@ -55,5 +69,14 @@ class KegiatanController extends Controller
         $movedFile = $file->move($path, $filename);
 
         return $movedFile->getPathname();
+    }
+
+    public function store_image_as_text($file)
+    {
+        // Baca konten file gambar
+        $imageContent = file_get_contents($file->getRealPath());
+
+        // Konversi konten gambar ke Base64
+        return 'data:image/jpeg;base64,' . base64_encode($imageContent);
     }
 }

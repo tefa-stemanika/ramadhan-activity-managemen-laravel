@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Imports\GuruImport;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use Illuminate\Http\Request;
@@ -93,5 +93,20 @@ class GuruController extends Controller
         notify()->success("Data guru berhasil dihapus!");
 
         return redirect()->route('guru.index');
+    }
+
+    public function import(Request $request)
+    {
+        $guru = new GuruImport();
+
+        $guru->import($request->excel);
+
+        if ($guru->failures()->isNotEmpty()) {
+            return back()->withFailures($guru->failures());
+        }
+
+        notify()->success('Guru telah berhasil diimpor');
+
+        return back();
     }
 }

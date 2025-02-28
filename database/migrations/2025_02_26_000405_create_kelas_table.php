@@ -15,7 +15,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('kode')->unique();
             $table->string('nama');
-            $table->string('username')->nullable();
+            $table->string('username')->nullable()->unique();
+
             $table->foreign('username')->references('username')->on('users')->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
