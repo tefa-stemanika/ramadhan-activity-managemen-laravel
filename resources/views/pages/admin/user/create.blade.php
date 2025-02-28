@@ -12,7 +12,7 @@
             </div>
             <div class="grid grid-cols-4 gap-3 items-center">
                 <label for="password" class="text-lg font-medium">Password</label>
-                <input type="password" name="password" id="password" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
+                <input typUe="password" name="password" id="password" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
                 <p class="col-start-2 text-red-500 text-sm">@error('password') {{ $message }} @enderror</p>
             </div>
             <div class="grid grid-cols-4 gap-3 items-center">

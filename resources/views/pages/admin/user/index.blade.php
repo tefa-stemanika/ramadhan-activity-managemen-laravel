@@ -8,9 +8,10 @@
                     <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
                     <p class="text-sm font-bold">Tambah Data</p>
                 </a>
-                <button class="flex items-center gap-4 px-5 py-2 rounded bg-[#FCEE80]">
-                    <p class="text-sm font-bold text-primary">Impor Data</p>
-                </button>
+                @include('components.shared.modals.import', [
+                    'template' => asset('templates/user-import-template.xlsx'),
+                    'action' => route('user.import')
+                ])
             </div>
             <form class="flex items-center gap-2.5">
                 <div class="relative">
@@ -22,6 +23,7 @@
                 </button>
             </fo>
         </div>
+        @include('components.shared.tables.import-error')
         <div class="mt-5 overflow-x-scroll">
             <table class="min-w-full w-max">
                 <thead>
@@ -54,4 +56,8 @@
             </table>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/import-modal.js') }}"></script>
 @endsection
