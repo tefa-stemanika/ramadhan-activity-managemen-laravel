@@ -52,7 +52,7 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kelas $kelas)
+    public function edit(Request $request, Kelas $kelas)
     {
         return view('pages.admin.kelas.edit', [
             'data' => $kelas
@@ -74,7 +74,7 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kelas $kelas)
+    public function destroy(Request $request, Kelas $kelas)
     {
         $kelas->delete();
 
@@ -93,7 +93,7 @@ class KelasController extends Controller
             return back()->withFailures($kelas->failures());
         }
 
-        notify()->success('User telah berhasil diimpor');
+        notify()->success('Kelas telah berhasil diimpor');
 
         return back();
     }
