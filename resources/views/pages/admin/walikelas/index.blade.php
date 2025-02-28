@@ -57,7 +57,7 @@
                             <form action="{{ route('walikelas.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
+                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus walikelas ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
                                 </form>
                         </td>
                     </tr>
