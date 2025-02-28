@@ -19,10 +19,12 @@
                     <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
                     <p class="text-sm font-bold">Tambah Data</p>
                 </a>
-                <button class="flex items-center gap-4 px-5 py-2 rounded bg-[#FCEE80]">
-                    <p class="text-sm font-bold text-primary">Impor Data</p>
-                </button>
+                @include('components.shared.modals.import', [
+                    'template' => asset('templates/guru-import-template.xlsx'),
+                    'action' => route('guru.import')
+                ])
             </div>
+            @include('components.shared.tables.import-error')
             <form class="flex items-center gap-2.5">
                 <div class="relative">
                     <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
@@ -66,4 +68,8 @@
             </table>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/import-modal.js') }}"></script>
 @endsection
