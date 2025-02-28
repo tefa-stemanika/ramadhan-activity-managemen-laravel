@@ -51,7 +51,7 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Kelas $kelas)
+    public function edit(Kelas $kelas)
     {
         return view('pages.admin.kelas.edit', [
             'data' => $kelas
@@ -73,7 +73,7 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Kelas $kelas)
+    public function destroy(Kelas $kelas)
     {
         $kelas->delete();
 
