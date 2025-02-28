@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('walikelas', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('kode');
             $table->string('nama');
             $table->string('kode_kelas');
             $table->string('username');
             $table->timestamps();
+
+
+            $table->foreign('kode_kelas')->references('kode')->on('kelas')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

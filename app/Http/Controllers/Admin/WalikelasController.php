@@ -4,15 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Walikelas;
+use App\Http\Requests\WalikelasCreateRequest;
+use App\Http\Requests\WalikelasUpdateRequest;
 
 class WalikelasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages.admin.walikelas.index');
+        $query = Walikelas::orderBy('kode_kelas');
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where('nama', 'like', "%$search%");
+        }
+
+        $data = $query->paginate(20);
+
+        return view('pages.admin.walikelas.index', compact('data'));
     }
 
     /**
@@ -26,9 +38,13 @@ class WalikelasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WalikelasCreateRequest $request)
     {
-        //
+        Walikelas::create($request->validated());
+
+        notify()->success('Walikelas berhasil ditambahkan');
+
+        return redirect()->route('walikelas.index');
     }
 
     /**
@@ -44,15 +60,21 @@ class WalikelasController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $walas = Walikelas::where('id', $id)->firstOrFail();
+        return view('pages.admin.walikelas.edit', compact('walas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(WalikelasUpdateRequest $request, string $id)
     {
-        //
+        $walas = Walikelas::where('id', $id)->firstOrFail();
+        $walas ->update($request->validated());
+
+        notify()->success('Data walikelas berhasil diperbarui');
+
+        return redirect()->route('walikelas.index');
     }
 
     /**
@@ -60,6 +82,10 @@ class WalikelasController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $walas = Walikelas::where('id', $id)->firstOrFail();
+        $walas->delete();
+
+        notify()->success('Walikelas berhasil dihapus');
+        return redirect()->route('walikelas.index');
     }
 }

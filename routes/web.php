@@ -49,13 +49,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         'guru' => App\Http\Controllers\Admin\GuruController::class,
         'walikelas' => App\Http\Controllers\Admin\WalikelasController::class,
     ]);
-
-    //? IMPORT 
-    Route::prefix('import')->group(function () {
+  
+  Route::prefix('import')->group(function () {
         Route::post('/user', [App\Http\Controllers\Admin\UserController::class, 'import'])->name('user.import');
         Route::post('/kelas', [App\Http\Controllers\Admin\KelasController::class, 'import'])->name('kelas.import');
         Route::post('/guru', [App\Http\Controllers\Admin\GuruController::class, 'import'])->name('guru.import');
         Route::post('/siswa', [App\Http\Controllers\Admin\SiswaController::class, 'import'])->name('siswa.import');
         Route::post('/walikelas', [App\Http\Controllers\Admin\WalikelasController::class, 'import'])->name('walikelas.import');
     });
+
 });
