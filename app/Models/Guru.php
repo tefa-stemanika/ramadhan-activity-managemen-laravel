@@ -12,13 +12,18 @@ class Guru extends Model
 
     protected $guarded = ['id'];
 
-     protected $table = 'guru';
+    protected $table = 'guru';
 
     protected $keyType = "string";
-    
+
     protected $fillable = [
         'kode',
         'nama',
         'username'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'username', 'username');
+    }
 }

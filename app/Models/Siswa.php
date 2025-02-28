@@ -32,4 +32,9 @@ class Siswa extends Model
     {
         return $this->belongsTo(Kelas::class, 'kode_kelas', 'kode');
     }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'username', 'username');
+    }
 }
