@@ -26,7 +26,7 @@
                 <p class="col-start-2 text-red-500 text-sm">@error('role') {{ $message }} @enderror</p>
             </div>
             <div class="flex items-center justify-end gap-4 pt-4">
-                <a href="{{ route('siswa.home') }}" class="bg-mist py-2 px-2.5 rounded text-white text-sm font-medium">Batal</a>
+                <a href="{{ route('user.index') }}" class="bg-mist py-2 px-2.5 rounded text-white text-sm font-medium">Batal</a>
                 <button type="submit" class="bg-primary py-2 px-2.5 rounded text-white text-sm font-medium">Simpan</button>
             </div>
         </form>

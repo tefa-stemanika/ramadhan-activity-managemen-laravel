@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\Kegiatan;
+use App\Imports\SiswaImport;
 use App\Http\Requests\SiswaCreateRequest;
 use App\Http\Requests\SiswaUpdateRequest;
 
@@ -111,5 +112,19 @@ class SiswaController extends Controller
 
         notify()->success('Siswa berhasil dihapus');
         return redirect()->route('siswa.index');
+    }
+
+    public function import(Request $request) {
+        $siswa = new SiswaImport();
+
+        $siswa->import($request->excel);
+
+        if($siswa->failures()->isNotEmpty()) {
+            return back()->withFailures($siswa->failures());
+        }
+
+        notify()->success('Siswa telah berhasil diimpor');
+
+        return back();
     }
 }

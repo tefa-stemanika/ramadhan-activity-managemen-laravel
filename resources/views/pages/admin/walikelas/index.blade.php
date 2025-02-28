@@ -14,9 +14,10 @@
                     <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
                     <p class="text-sm font-bold">Tambah Data</p>
                 </a>
-                <button class="flex items-center gap-4 px-5 py-2 rounded bg-[#FCEE80]">
-                    <p class="text-sm font-bold text-primary">Impor Data</p>
-                </button>
+                @include('components.shared.modals.import', [
+                    'template' => asset('templates/walikelas-import-template.xlsx'),
+                    'action' => route('walikelas.import')
+                ])
             </div>
            <form action="{{ route('walikelas.index') }}" method="GET" class="flex items-center gap-2.5">
                 <div class="relative">
@@ -57,7 +58,7 @@
                             <form action="{{ route('walikelas.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
+                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus walikelas ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
                                 </form>
                         </td>
                     </tr>
@@ -67,4 +68,8 @@
             </table>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/import-modal.js') }}"></script>
 @endsection
