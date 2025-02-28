@@ -37,11 +37,11 @@ class KegiatanCreateRequest extends FormRequest
             'Ngobras',
             'Penutupan',
         ];
-        
+
         return [
             'jenis_kegiatan' => ['required', Rule::in($jenisKegiatan)],
             'deskripsi' => ['required', 'string'],
-            'foto' => ['required', 'mimes:png,jpg,jpeg,svg'],
+            'foto' => ['required', 'mimes:png,jpg,jpeg,svg', 'max:2048'],
         ];
     }
 }
