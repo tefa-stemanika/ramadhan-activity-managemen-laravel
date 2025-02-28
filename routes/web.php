@@ -18,7 +18,6 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/signin', [App\Http\Controllers\Auth\LoginController::class, 'signin'])->name('signin');
 });
 
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return redirect('/siswa');
@@ -54,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
             'siswa' => App\Http\Controllers\Admin\SiswaController::class,
             'guru' => App\Http\Controllers\Admin\GuruController::class,
             'walikelas' => App\Http\Controllers\Admin\WalikelasController::class,
+            'jadwal-sholat' => \App\Http\Controllers\Admin\JadwalSholatController::class,
         ]);
 
         //? IMPORT 
@@ -65,4 +65,5 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/walikelas', [App\Http\Controllers\Admin\WalikelasController::class, 'import'])->name('walikelas.import');
         });
     });
+  
 });
