@@ -23,8 +23,13 @@ class Walikelas extends Model
         'username'
     ];
 
-     public function kelas()
+    public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'kode_kelas', 'kode');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'username', 'username');
     }
 }

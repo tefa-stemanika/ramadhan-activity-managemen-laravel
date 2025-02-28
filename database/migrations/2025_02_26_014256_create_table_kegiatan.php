@@ -29,7 +29,7 @@ return new class extends Migration
                 'Ngobras',
                 'Penutupan',
             ]);
-            $table->string('deskripsi');
+            $table->string('deskripsi')->nullable();
             $table->longText('foto');
             $table->timestamps();
 
