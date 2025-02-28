@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
@@ -10,9 +11,19 @@ class GuruController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pages.admin.guru.index');
+        $query = Guru::query();
+
+        if ($request->has('q')) {
+            $query->where('kode', 'like', "%{$request->q}%")
+                ->orWhere('nama', 'like', "%{$request->q}%")
+                ->orWhere('username', 'like', "%{$request}%");
+        }
+
+        $guru = $query->get();
+
+        return view('pages.admin.guru.index', compact('guru'));
     }
 
     /**
@@ -28,7 +39,15 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \App\Models\Guru::create([
+            'kode' => $request->kode,
+            'nama' => $request->nama,
+            'username' => $request->username
+        ]);
+
+        notify()->success(("Data guru berhasil ditambahkan!"));
+
+        return redirect()->route('guru.index');
     }
 
     /**
@@ -44,22 +63,35 @@ class GuruController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $guru = Guru::findOrFail($id);
+        return view('pages.admin.guru.edit', compact('guru'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $guru = Guru::findOrFail($id);
+        $guru->update([
+            'kode' => $request->kode,
+            'nama' => $request->nama,
+            'username' => $request->username
+        ]);
+        
+        notify()->success("Data guru berhasil diubah!");
+        return redirect()->route('guru.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, Guru $guru)
     {
-        //
+        $guru->delete();
+
+        notify()->success("Data guru berhasil dihapus!");
+
+        return redirect()->route('guru.index');
     }
 }
