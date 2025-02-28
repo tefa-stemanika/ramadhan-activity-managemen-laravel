@@ -11,15 +11,17 @@
     </section>
 
     <section class="mt-11">
-        <form action="" method="" class="flex items-center gap-3">
-            <label for="chose_date" class="flex items-center gap-2.5 w-full bg-[#D9D9D9] rounded-full px-2.5 py-1">
-                <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="">
-                <span class="text-primary text-xs font-semibold">Pilih Tanggal</span>
-            </label>
-            <div class="relative">
-                <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
-                <input type="search" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
+        <form action="" method="get" class="grid grid-cols-4 gap-3">
+            <div class="grid grid-cols-1 gap-3 col-span-3">
+                <input type="date" value="{{ old('tanggal') }}" name="tanggal" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
+                <div class="relative">
+                    <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                    <input type="search" name="search" value="{{ old('search') }}" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
+                </div>
             </div>
+            <button type="submit" class="bg-primary rounded-md w-full p-2 text-white">
+                filter
+            </button>
         </form>
         <div class="mt-5 overflow-x-scroll">
             <table class="min-w-full w-max">
@@ -41,8 +43,8 @@
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->jenis_kegiatan }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->deskripsi }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
-                                <button data-photo="{{ asset($item->foto) }}" class="foto-kegiatan">
-                                    Foto Kegiatan
+                                <button onclick="showPhotoPopup('{{ $item->foto }}')">
+                                    lihat
                                 </button>
                             </td>
                             <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
@@ -56,64 +58,24 @@
             </table>
         </div>
     </section>
+
+    <div id="photoOverlay" class="hidden fixed z-50 top-0 left-0 w-full h-screen bg-black bg-opacity-70">
+        <div class="flex items-center justify-center relative h-full">
+            <img id="popupImage" class="max-w-[80%] max-h-[80%] rounded-lg shadow-2xl" src="" alt="Foto Kegiatan">
+            <button class="absolute flex items-center justify-center top-2 right-2 bg-white text-black p-2 aspect-square rounded-full shadow-md" onclick="closePhotoPopup()">✖</button>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
     <script>
-    function showPhotoPopup(photoUrl) {
-        // Buat elemen overlay
-        let overlay = document.createElement("div");
-        overlay.style.position = "fixed";
-        overlay.style.top = "0";
-        overlay.style.left = "0";
-        overlay.style.width = "100%";
-        overlay.style.height = "100%";
-        overlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-        overlay.style.display = "flex";
-        overlay.style.alignItems = "center";
-        overlay.style.justifyContent = "center";
-        overlay.style.zIndex = "1000";
-
-        // Buat elemen gambar
-        let img = document.createElement("img");
-        img.src = photoUrl;
-        img.style.maxWidth = "80%";
-        img.style.maxHeight = "80%";
-        img.style.borderRadius = "10px";
-        img.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-
-        // Buat tombol close
-        let closeButton = document.createElement("button");
-        closeButton.innerText = "✖";
-        closeButton.style.position = "absolute";
-        closeButton.style.top = "20px";
-        closeButton.style.right = "20px";
-        closeButton.style.background = "white";
-        closeButton.style.border = "none";
-        closeButton.style.padding = "10px";
-        closeButton.style.borderRadius = "50%";
-        closeButton.style.cursor = "pointer";
-        closeButton.onclick = function () {
-            document.body.removeChild(overlay);
-        };
-
-        // Tambahkan elemen ke overlay
-        overlay.appendChild(img);
-        overlay.appendChild(closeButton);
+        function showPhotoPopup(photoUrl) {
+            document.getElementById("popupImage").src = photoUrl;
+            document.getElementById("photoOverlay").classList.replace("hidden", "flex");
+        }
         
-        // Tambahkan overlay ke body
-        document.body.appendChild(overlay);
-    }
-
-    // Tambahkan event listener ke semua tombol "Foto Kegiatan"
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll("button.foto-kegiatan").forEach(button => {
-            button.addEventListener("click", function () {
-                let photoUrl = this.getAttribute("data-photo");
-                showPhotoPopup(photoUrl);
-            });
-        });
-    });
-
+        function closePhotoPopup() {
+            document.getElementById("photoOverlay").classList.replace("flex", "hidden");
+        }
     </script>
 @endsection
