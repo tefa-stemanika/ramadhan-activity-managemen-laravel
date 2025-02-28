@@ -27,7 +27,7 @@ class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFail
     {
         return new Guru([
             'kode' => $row['kode'],
-            'nama' => Hash::make($row['nama']),
+            'nama' =>$row['nama'],
             'username' => $row['username']
         ]);
     }
@@ -51,7 +51,7 @@ class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFail
         return [
             '*.kode.unique' => ':attribute sudah digunakan oleh guru lain!',
             '*.kode.required' => ':attribute dibutuhkan!',
-            '*.username.max' => ':attribute maksimal memiliki 255 karakter!',
+            '*.username.unique' => ':attribute maksimal memiliki 255 karakter!',
             '*.nama.required' => ':attribute dibutuhkan!',
             '*.nama.max' => ':attribute maksimal memiliki 255 karakter!',
             '*.username.required' => ':attribute dibutuhkan!',
