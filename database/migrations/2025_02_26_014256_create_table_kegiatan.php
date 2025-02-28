@@ -30,7 +30,7 @@ return new class extends Migration
                 'Penutupan',
             ]);
             $table->string('deskripsi');
-            $table->string('foto');
+            $table->longText('foto');
             $table->timestamps();
         });
     }
