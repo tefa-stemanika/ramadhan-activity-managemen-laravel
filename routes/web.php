@@ -41,7 +41,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/siswa', [App\Http\Controllers\Walikelas\DataSiswaController::class, 'index'])->name('walikelas.data.siswa');
         Route::get('/siswa/kegiatan/{nis}', [App\Http\Controllers\Walikelas\DataSiswaController::class, 'show'])->name('walikelas.data.siswa.kegiatan');
         Route::get('/jadwal-sholat', [App\Http\Controllers\Walikelas\JadwalSholatController::class, 'index'])->name('walikelas.jadwal-sholat');
-        Route::get('/chart-data', [App\Http\Controllers\Walikelas\HomeController::class, 'chartData'])->name('chart.data');
+        Route::get('/chart-data', [App\Http\Controllers\Walikelas\HomeController::class, 'chartData'])->name('chart.data.siswa');
+    });
+
+    Route::prefix('guru')->middleware(['role:guru', 'not.null:guru'])->group(function () {
+        Route::get('/', [App\Http\Controllers\Guru\HomeController::class, 'index'])->name('guru.home');
+        Route::get('/profile', [App\Http\Controllers\Guru\HomeController::class, 'profile'])->name('guru.profile');
+        Route::get('/profile/reset-password', [App\Http\Controllers\Guru\ResetPasswordController::class, 'index'])->name('guru.reset-password');
+        Route::get('/kelas', [App\Http\Controllers\Guru\KelasController::class, 'index'])->name('guru.data.kelas');
+        Route::get('/kelas/siswa', [App\Http\Controllers\Guru\SiswaController::class, 'index'])->name('guru.data.kelas.siswa');
+        Route::get('/kelas/siswa/kegiatan', [App\Http\Controllers\Guru\KegiatanController::class, 'index'])->name('guru.data.kelas.siswa.kegiatan');
+        Route::get('/chart-data', [App\Http\Controllers\Guru\HomeController::class, 'chartData'])->name('chart.data.kelas');
     });
 
     Route::prefix('admin')->middleware(['role:admin'])->group(function () {
