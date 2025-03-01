@@ -63,6 +63,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/guru', [App\Http\Controllers\Admin\GuruController::class, 'import'])->name('guru.import');
             Route::post('/siswa', [App\Http\Controllers\Admin\SiswaController::class, 'import'])->name('siswa.import');
             Route::post('/walikelas', [App\Http\Controllers\Admin\WalikelasController::class, 'import'])->name('walikelas.import');
+            Route::post('/jadwal-sholat', [App\Http\Controllers\Admin\JadwalSholatController::class, 'import'])->name('jadwal-sholat.import');
         });
     });
   
