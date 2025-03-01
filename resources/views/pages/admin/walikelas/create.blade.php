@@ -28,10 +28,14 @@
                 <input type="text" name="nama" id="nama" class="col-span-3 bg-white  px-3 py-2 md:px-5 md:py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
                  <p class="col-start-2 text-red-500 text-[12px] md:text-sm">@error('nama') {{ $message }} @enderror</p>
             </div>
-            <div class="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-3 items-center">
-                <label for="username" class="text-sm md:text-lg  font-medium">Username</label>
-                <input type="text" name="username" id="username" class="col-span-3 bg-white  px-3 py-2 md:px-5 md:py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
-                <p class="col-start-2 text-red-500 ext-[12px] md:text-sm">@error('username') {{ $message }} @enderror</p>
+            <div class="grid grid-cols-4 gap-3 items-center">
+                <label for="username" class="text-lg font-medium">Username</label>
+                <select name="username" id="username" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
+                    @foreach (App\Models\User::orderBy('username')->where('role', 'walikelas')->get() as $item)
+                        <option value="{{ $item->username }}">{{ $item->username }}</option>
+                    @endforeach
+                </select>
+                <p class="col-start-2 col-span-3 text-red-500 text-sm">@error('username') {{ $message }} @enderror</p>
             </div>
             <div class="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-3 items-center">
                     <label for="kode_kelas" class="text-sm md:text-lg font-medium">Kelas</label>
@@ -40,7 +44,7 @@
                             <option value="{{ $item->kode }}">{{ $item->kode }}</option>
                         @endforeach
                     </select>
-                    <p class="col-start-2 text-red-500 text-[12px] md:text-sm">@error('kode_kelas') {{ $message }} @enderror</p>
+                    <p class="col-start-2 col-span-3 text-red-500 text-sm">@error('kode_kelas') {{ $message }} @enderror</p>
                 </div>
             <div class="flex items-center justify-end gap-4 pt-4">
                 <a href="{{ route('walikelas.index') }}" class="bg-mist py-1 md:py-2 px-5 md:px-2.5 rounded text-white text-sm font-medium">Batal</a>

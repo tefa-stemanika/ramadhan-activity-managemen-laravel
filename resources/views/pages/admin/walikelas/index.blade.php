@@ -39,28 +39,30 @@
             <table class="min-w-full w-max">
                 <thead>
                     <tr>
-                        <th class="bg-primary px-4 py-2 md:px-6 md:py-2.5 text-white text-sm font-medium">No.</th>
-                        <th class="bg-primary px-4 py-2 md:px-6 md:py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Kode Wali Kelas</th>
-                        <th class="bg-primary px-4 py-2 md:px-6 md:py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Nama Wali Kelas</th>
-                        <th class="bg-primary px-4 py-2 md:px-6 md:py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Kode Kelas</th>
-                        <th class="bg-primary px-4 py-2 md:px-6 md:py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Aksi</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium">No.</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Kode Wali Kelas</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Nama Wali Kelas</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Kode Kelas</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Username</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($data as $key => $item)
                     <tr>
-                        <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium text-center">{{ $key + 1 }}</td>
-                        <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->kode }}</td>
-                        <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->nama }}</td>
-                        <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->kode_kelas }}</td>
-                        <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
-                            <a href="{{ route('walikelas.edit', $item->id) }}" class="text-[#0062FF] text-sm font-medium">Edit</a>
+                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium text-center">{{ $key + 1 }}</td>
+                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->kode }}</td>
+                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->nama }}</td>
+                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->kode_kelas }}</td>
+                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->username }}</td>
+                        <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
+                            <a href="{{ route('walikelas.edit', $item) }}" class="text-[#0062FF] text-sm font-medium">Edit</a>
                             <p>|</p>
-                            <form action="{{ route('walikelas.destroy', $item->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus walikelas ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
-                                </form>
+                            <form action="{{ route('walikelas.destroy', $item) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('Apakah Anda yakin ingin menghapus walikelas ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
