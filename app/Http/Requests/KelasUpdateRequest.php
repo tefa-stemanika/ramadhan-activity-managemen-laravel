@@ -24,8 +24,7 @@ class KelasUpdateRequest extends FormRequest
     {
         return [
             'kode' => ['required', 'string', Rule::unique('kelas', 'kode')->ignore($this->kelas)],
-            'nama' => ['required', 'max:255', 'string'],
-            'username' => ['required', 'exists:users,username'],
+            'nama' => ['required', 'max:255', 'string']
         ];
     }
 }

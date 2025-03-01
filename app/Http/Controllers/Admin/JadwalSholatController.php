@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\JadwalSholatImport;
 use App\Models\JadwalSholat;
 use Illuminate\Http\Request;
 
@@ -117,5 +118,20 @@ class JadwalSholatController extends Controller
         notify()->success("Jadwal sholat berhasil dihapus!");
 
         return redirect()->route('jadwal-sholat.index');
+    }
+
+    public function import(Request $request)
+    {
+        $jadwal_sholat = new JadwalSholatImport();
+
+        $jadwal_sholat->import($request->excel);
+
+        if ($jadwal_sholat->failures()->isNotEmpty()) {
+            return back()->withFailures($jadwal_sholat->failures());
+        }
+
+        notify()->success('Jadwal sholat berhasil diimpor');
+
+        return back();
     }
 }

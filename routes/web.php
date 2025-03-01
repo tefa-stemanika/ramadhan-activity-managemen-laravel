@@ -27,13 +27,21 @@ Route::middleware(['auth'])->group(function () {
         return redirect()->route('login');
     })->name('logout')->middleware('auth');
 
-    Route::prefix('siswa')->middleware(['role:siswa'])->group(function () {
+    Route::prefix('siswa')->middleware(['role:siswa', 'not.null:siswa'])->group(function () {
         Route::get('/', [App\Http\Controllers\Siswa\HomeController::class, 'index'])->name('siswa.home');
         Route::get('/jadwal-sholat', [App\Http\Controllers\Siswa\JadwalSholatController::class, 'index'])->name('siswa.jadwal-sholat');
         Route::get('/kegiatan/create', [App\Http\Controllers\Siswa\KegiatanController::class, 'create'])->name('siswa.kegiatan.create');
         Route::post('/kegiatan/store', [App\Http\Controllers\Siswa\KegiatanController::class, 'store'])->name('siswa.kegiatan.store');
         Route::get('/kegiatan/{kegiatan}/destroy', [App\Http\Controllers\Siswa\KegiatanController::class, 'destroy'])->name('siswa.kegiatan.destroy');
         Route::get('/kegiatan/rekap', [App\Http\Controllers\Siswa\KegiatanController::class, 'index'])->name('siswa.kegiatan.rekap');
+    });
+
+    Route::prefix('walikelas')->middleware(['role:walikelas', 'not.null:walikelas'])->group(function () {
+        Route::get('/', [App\Http\Controllers\Walikelas\HomeController::class, 'index'])->name('walikelas.home');
+        Route::get('/siswa', [App\Http\Controllers\Walikelas\DataSiswaController::class, 'index'])->name('walikelas.data.siswa');
+        Route::get('/siswa/kegiatan/{nis}', [App\Http\Controllers\Walikelas\DataSiswaController::class, 'show'])->name('walikelas.data.siswa.kegiatan');
+        Route::get('/jadwal-sholat', [App\Http\Controllers\Walikelas\JadwalSholatController::class, 'index'])->name('walikelas.jadwal-sholat');
+        Route::get('/chart-data', [App\Http\Controllers\Walikelas\HomeController::class, 'chartData'])->name('chart.data');
     });
 
     Route::prefix('admin')->middleware(['role:admin'])->group(function () {
@@ -50,8 +58,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resources([
             'user' => App\Http\Controllers\Admin\UserController::class,
-            'siswa' => App\Http\Controllers\Admin\SiswaController::class,
             'guru' => App\Http\Controllers\Admin\GuruController::class,
+            'siswa' => App\Http\Controllers\Admin\SiswaController::class,
             'walikelas' => App\Http\Controllers\Admin\WalikelasController::class,
             'jadwal-sholat' => \App\Http\Controllers\Admin\JadwalSholatController::class,
         ]);
@@ -63,7 +71,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/guru', [App\Http\Controllers\Admin\GuruController::class, 'import'])->name('guru.import');
             Route::post('/siswa', [App\Http\Controllers\Admin\SiswaController::class, 'import'])->name('siswa.import');
             Route::post('/walikelas', [App\Http\Controllers\Admin\WalikelasController::class, 'import'])->name('walikelas.import');
+            Route::post('/jadwal-sholat', [App\Http\Controllers\Admin\JadwalSholatController::class, 'import'])->name('jadwal-sholat.import');
         });
     });
-  
 });

@@ -1,14 +1,23 @@
 @extends('components.layouts.admin.container')
+@section('title')
+    Detail Siswa
+@endsection
 
 @section('main')
     <section>
-        <div class="mb-[80px]">
-            <div class="flex gap-x-4 items-center">
-                <a href="{{ route('siswa.index') }}"><i data-feather="chevron-left" class="bg-primary rounded-[5px]  text-white"></i></a>
-                <p class="text-2xl text-gray-500 font-bold">Data Siswa</p>
-                <i data-feather="chevron-right" class=" text-gray-500"></i>
-                <p class="text-2xl font-bold">{{ $data->nama }}</p>
-            </div>
+        <div class="flex space-x-8 mb-6 md:mb-12">
+            <a href="{{ url()->previous() }}" class="flex items-center gap-4">
+                <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
+                    <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
+                </div>
+                <p class="text-sm md:text-base font-bold text-mist">Data Siswa</p>
+            </a>
+            
+            <a href="{{ route('kelas.index') }}" class="flex items-center gap-4">
+                <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="8" height="8" alt="" class="w-4">
+            </a>
+    
+            <p class="text-sm md:text-base font-bold">{{ $data->nama }}</p>
         </div>
         <div class="flex items-center justify-between">
             <form action="{{ route('siswa.show', $data->nis) }}" method="get">
@@ -51,7 +60,7 @@
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->jenis_kegiatan }}</td>
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->deskripsi }}</td>
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9] ">
-                            <button type="button" onclick="showPhotoPopup('{{ asset($item->foto) }}')" class="foto-kegiatan flex justify-center gap-x-2 items-center px-2.5 py-[5px] text-sm font-semibold text-[#6B18FF] ">
+                            <button type="button" onclick="showPhotoPopup('{{ $item->foto }}')" class="foto-kegiatan flex justify-center gap-x-2 items-center px-2.5 py-[5px] text-sm font-semibold text-[#6B18FF] ">
                                 <i data-feather="eye" class="feather-16"></i>Lihat
                             </button>
                         </td>

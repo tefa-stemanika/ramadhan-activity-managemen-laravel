@@ -1,28 +1,21 @@
 @extends('components.layouts.admin.container')
+@section('title')
+    Data Siswa
+@endsection
 
 @section('main')
     <section>
-        <div class="mb-[80px]">
-            <div class="flex gap-x-4 items-center">
-                <a href="{{ route('siswa.index') }}"><i data-feather="chevron-left" class="bg-primary rounded-[5px]  text-white"></i></a>
-                <p class="text-2xl text-gray-500 font-bold">Data Siswa</p>
+        <a href="{{ url()->previous() }}" class="flex items-center gap-4 mb-6 md:mb-12">
+            <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
+                <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
             </div>
-        </div>
-        <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-                <a href="siswa/create" class="flex items-center gap-4 px-5 py-2 rounded bg-transparent border border-primary text-primary">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
-                    <p class="text-sm font-bold">Tambah Data</p>
-                </a>
-                @include('components.shared.modals.import', [
-                    'template' => asset('templates/siswa-import-template.xlsx'),
-                    'action' => route('siswa.import')
-                ])
-            </div>
-            <form action="{{ route('siswa.index') }}" method="GET" class="flex items-center gap-2.5">
-                <div class="relative">
+            <p class="text-sm md:text-base font-bold">Data Siswa</p>
+        </a>
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <form action="{{ route('siswa.index') }}" method="GET" class="flex items-center gap-2.5 w-full md:w-auto">
+                <div class="relative w-full md:w-auto">
                     <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
-                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari siswa..." class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
+                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari siswa..." class="bg-white w-full md:w-auto rounded-full pl-9 pr-2.5 py-1 border border-primary">
                 </div>
                 <button class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
                     Cari
@@ -33,6 +26,16 @@
                     </a>
                 @endif
             </form>
+            <div class="flex items-center gap-2.5">
+                <a href="siswa/create" class="flex items-center gap-4 px-5 py-2 rounded bg-transparent border border-primary text-primary">
+                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
+                    <p class="text-sm font-bold">Tambah Data</p>
+                </a>
+                @include('components.shared.modals.import', [
+                    'template' => asset('templates/siswa-import-template.xlsx'),
+                    'action' => route('siswa.import')
+                ])
+            </div>
         </div>
         <div class="mt-5 overflow-x-scroll">
             <table class="min-w-full w-max">
@@ -42,6 +45,7 @@
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">NIS</th>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Nama Siswa</th>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Kelas</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Username</th>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Aksi</th>
                     </tr>
                 </thead>
@@ -52,6 +56,7 @@
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->nis }}</td>
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->nama }}</td>
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->kelas->nama }}</td>
+                        <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->username }}</td>
                         <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
                             <a href="{{ route('siswa.show', $item->nis) }}" class="text-primary text-sm font-medium">Detail</a>
                             <p>|</p>
