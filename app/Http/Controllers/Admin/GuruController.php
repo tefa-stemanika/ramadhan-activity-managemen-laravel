@@ -21,7 +21,7 @@ class GuruController extends Controller
                 ->orWhere('username', 'like', "%{$request}%");
         }
 
-        $guru = $query->get();
+        $guru = $query->paginate(20);
 
         return view('pages.admin.guru.index', compact('guru'));
     }
