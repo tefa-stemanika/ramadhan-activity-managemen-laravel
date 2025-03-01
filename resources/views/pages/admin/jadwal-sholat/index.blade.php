@@ -24,7 +24,6 @@
                     'action' => route('jadwal-sholat.import')
             ])
         </div>
-        @include('components.shared.tables.import-error')
         <form class="flex items-center gap-2.5">
             <div class="relative">
                 <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
@@ -35,6 +34,7 @@
             </button>
         </form>
     </div>
+    @include('components.shared.tables.import-error')
     <div class="mt-5 overflow-x-scroll">
         <table class="min-w-full w-max">
             <thead>

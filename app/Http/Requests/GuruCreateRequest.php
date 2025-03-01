@@ -3,16 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class KelasUpdateRequest extends FormRequest
+class GuruCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -23,8 +22,9 @@ class KelasUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kode' => ['required', 'string', Rule::unique('kelas', 'kode')->ignore($this->kelas)],
-            'nama' => ['required', 'max:255', 'string']
+            'kode' => ['required', 'string', 'unique:guru,kode'],
+            'nama' => ['required', 'max:255', 'string'],
+            'username' => ['required', 'string', 'exists:users,username', 'unique:guru,username']
         ];
     }
 }

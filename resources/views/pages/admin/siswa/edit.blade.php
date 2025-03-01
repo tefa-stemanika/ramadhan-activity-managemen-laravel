@@ -8,17 +8,21 @@
             <div class="grid grid-cols-4 gap-3 items-center">
                 <label for="nis" class="text-lg font-medium">Nis</label>
                 <input type="text" name="nis" id="nis" value="{{ $siswa->nis }}" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
-                <p class="col-start-2 text-red-500 text-sm">@error('nis') {{ $message }} @enderror</p>
-            </div>
-            <div class="grid grid-cols-4 gap-3 items-center">
-                <label for="username" class="text-lg font-medium">Username</label>
-                <input type="text" name="username" id="username" value="{{ $siswa->username }}" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
-                <p class="col-start-2 text-red-500 text-sm">@error('username') {{ $message }} @enderror</p>
+                <p class="col-start-2 col-span-3 text-red-500 text-sm">@error('nis') {{ $message }} @enderror</p>
             </div>
             <div class="grid grid-cols-4 gap-3 items-center">
                 <label for="nama" class="text-lg font-medium">Nama</label>
                 <input type="nama" name="nama" id="nama" value="{{ $siswa->nama }}" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
-                <p class="col-start-2 text-red-500 text-sm">@error('nama') {{ $message }} @enderror</p>
+                <p class="col-start-2 col-span-3 text-red-500 text-sm">@error('nama') {{ $message }} @enderror</p>
+            </div>
+            <div class="grid grid-cols-4 gap-3 items-center">
+                <label for="username" class="text-lg font-medium">Username</label>
+                <select name="username" id="username" class="col-span-3 bg-white px-5 py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
+                    @foreach (App\Models\User::orderBy('username')->where('role', 'siswa')->get() as $item)
+                        <option value="{{ $item->username }}">{{ $item->username }}</option>
+                    @endforeach
+                </select>
+                <p class="col-start-2 col-span-3 text-red-500 text-sm">@error('username') {{ $message }} @enderror</p>
             </div>
              <div class="grid grid-cols-4 gap-3 items-center">
                     <label for="kode_kelas" class="text-lg font-medium">Kelas</label>
@@ -27,7 +31,7 @@
                             <option value="{{ $item->kode }}">{{ $item->kode }}</option>
                         @endforeach
                     </select>
-                    <p class="col-start-2 text-red-500 text-sm">@error('kode_kelas') {{ $message }} @enderror</p>
+                    <p class="col-start-2 col-span-3 text-red-500 text-sm">@error('kode_kelas') {{ $message }} @enderror</p>
                 </div>
             <div class="flex items-center justify-end gap-4 pt-4">
                 <a href="{{ route('siswa.index') }}" class="bg-mist py-2 px-2.5 rounded text-white text-sm font-medium">Batal</a>

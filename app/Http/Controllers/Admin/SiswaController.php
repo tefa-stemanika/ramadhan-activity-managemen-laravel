@@ -82,19 +82,16 @@ class SiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Siswa $siswa)
     {
-        $siswa = Siswa::where('id', $id)->firstOrFail();
         return view('pages.admin.siswa.edit', compact('siswa'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(SiswaUpdateRequest $request, string $id)
+    public function update(SiswaUpdateRequest $request, Siswa $siswa)
     {
-        $siswa = Siswa::where('id', $id)->firstOrFail();
-
         $siswa->update($request->validated());
 
         notify()->success('Data siswa berhasil diperbarui');
@@ -114,12 +111,13 @@ class SiswaController extends Controller
         return redirect()->route('siswa.index');
     }
 
-    public function import(Request $request) {
+    public function import(Request $request)
+    {
         $siswa = new SiswaImport();
 
         $siswa->import($request->excel);
 
-        if($siswa->failures()->isNotEmpty()) {
+        if ($siswa->failures()->isNotEmpty()) {
             return back()->withFailures($siswa->failures());
         }
 

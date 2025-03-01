@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Imports\GuruImport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GuruCreateRequest;
+use App\Http\Requests\GuruUpdateRequest;
 use App\Models\Guru;
 use Illuminate\Http\Request;
 
@@ -37,9 +40,9 @@ class GuruController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GuruCreateRequest $request)
     {
-        \App\Models\Guru::create([
+        Guru::create([
             'kode' => $request->kode,
             'nama' => $request->nama,
             'username' => $request->username
@@ -61,24 +64,22 @@ class GuruController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Guru $guru)
     {
-        $guru = Guru::findOrFail($id);
         return view('pages.admin.guru.edit', compact('guru'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(GuruUpdateRequest $request, Guru $guru)
     {
-        $guru = Guru::findOrFail($id);
         $guru->update([
             'kode' => $request->kode,
             'nama' => $request->nama,
             'username' => $request->username
         ]);
-        
+
         notify()->success("Data guru berhasil diubah!");
         return redirect()->route('guru.index');
     }

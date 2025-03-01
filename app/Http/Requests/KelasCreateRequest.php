@@ -22,9 +22,8 @@ class KelasCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kode' => ['required','string', 'unique:kelas,kode'],
-            'nama' => ['required','max:255', 'string'],
-            'username' => ['required','exists:users,username'],
+            'kode' => ['required', 'string', 'unique:kelas,kode'],
+            'nama' => ['required', 'max:255', 'string']
         ];
     }
 }

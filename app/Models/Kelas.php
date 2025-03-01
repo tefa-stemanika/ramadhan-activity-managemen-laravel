@@ -21,14 +21,8 @@ class Kelas extends Model
     protected $fillable = [
         'kode',
         'nama',
-        'username'
     ];
-
-    public function User()
-    {
-        return $this->belongsTo(User::class, 'username', 'username');
-    }
-
+    
     public function Siswa()
     {
         return $this->hasMany(Siswa::class, 'kode_kelas', 'kode');
