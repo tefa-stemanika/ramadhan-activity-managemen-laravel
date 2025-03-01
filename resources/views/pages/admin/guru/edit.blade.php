@@ -30,11 +30,7 @@
             </div>
             <div class="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-3 items-center">
                 <label for="username" class="text-sm md:text-lg font-medium">Username</label>
-                <select name="username" id="username" class="col-span-3 bg-white px-3 py-2 md:px-5 md:py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
-                    @foreach (App\Models\User::orderBy('username')->get() as $item)
-                        <option value="{{ $item->username }}" @selected($guru->username == $item->username)>{{ $item->username }}</option>
-                    @endforeach
-                </select>
+                <input type="username" name="username" id="username" value="{{ old('username', $guru->username) }}" class="col-span-3 bg-white px-3 py-2 md:px-5 md:py-3.5 rounded-md border-[0.5px] border-[#D9D9D9]">
                 <p class="col-start-2 text-red-500 text-[12px] md:text-sm">@error('username') {{ $message }} @enderror</p>
             </div>
             <div class="flex items-center justify-end gap-4 pt-4">
