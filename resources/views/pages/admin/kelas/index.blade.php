@@ -1,18 +1,17 @@
 @extends('components.layouts.admin.container')
+@section('title')
+    Data Kelas
+@endsection
 
 @section('main')
     <section>
-        <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-                <a href="kelas/create" class="flex items-center gap-4 px-5 py-2 rounded bg-transparent border border-primary text-primary">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
-                    <p class="text-sm font-bold">Tambah Data</p>
-                </a>
-                @include('components.shared.modals.import', [
-                    'template' => asset('templates/kelas-import-template.xlsx'),
-                    'action' => route('kelas.import')
-                ])
+        <a href="{{ url()->previous() }}" class="flex items-center gap-4 mb-6 md:mb-12">
+            <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
+                <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
             </div>
+            <p class="text-sm md:text-base font-bold">Data Kelas</p>
+        </a>
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <form class="flex items-center gap-2.5 w-full md:w-auto">
                 <div class="relative w-full md:w-auto">
                     <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
@@ -27,6 +26,16 @@
                     </a>
                 @endif
             </form>
+            <div class="flex items-center gap-2.5">
+                <a href="kelas/create" class="flex items-center gap-4 px-5 py-2 rounded bg-transparent border border-primary text-primary">
+                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
+                    <p class="text-sm font-bold">Tambah Data</p>
+                </a>
+                @include('components.shared.modals.import', [
+                    'template' => asset('templates/kelas-import-template.xlsx'),
+                    'action' => route('kelas.import')
+                ])
+            </div>
         </div>
         @include('components.shared.tables.import-error')
         <div class="mt-5 overflow-x-scroll">

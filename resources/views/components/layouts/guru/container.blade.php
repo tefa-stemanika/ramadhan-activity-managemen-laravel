@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('icons/logo-primary.svg') }}">
-    <title>@yield('title') - Karomah</title>
     <script src="https://unpkg.com/feather-icons"></script>
+    <title>Guru</title>
     @notifyCss
     @env('production')
         <link rel="stylesheet" href="{{ asset('build/assets/global.css') }}">
@@ -14,19 +13,10 @@
         @vite('resources/css/global.css')
     @endenv
 </head>
-<body class="bg-white max-w-[3000px] mx-auto">
-    <div class="hidden md:block">
-        @include('components.layouts.admin.sidebar')
-    </div>
-
-    <section class="lg:ml-80 flex items-center justify-between px-12 py-7 bg-[#F5F5F5]">
-        <h1 class="text-2xl font-bold">@yield('title')</h1>
-        <button class="flex items-center justify-center p-0.5 bg-[#D9D9D9] aspect-square rounded-full">
-            <img src="{{ asset('icons/mynaui_user-solid.svg') }}" alt="">
-        </button>
-    </section>
+<body class="max-w-[720px] mx-auto bg-white pb-6">
+    @include('components.layouts.guru.navbar')
     
-    <main class="lg:ml-80 px-4 lg:px-12 mt-24 lg:mt-0 lg:my-0 py-8">
+    <main class="px-6 mt-32">
         @yield('main')
     </main>
 

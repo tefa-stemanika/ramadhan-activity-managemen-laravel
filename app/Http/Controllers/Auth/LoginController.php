@@ -38,6 +38,9 @@ class LoginController extends Controller
 
                 case 'walikelas':
                     return redirect()->route('walikelas.home');
+
+                case 'guru':
+                    return redirect()->route('guru.home');
             }
         } else {
             $request->flashOnly('username');
