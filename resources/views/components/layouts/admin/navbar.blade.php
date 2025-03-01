@@ -1,17 +1,40 @@
 @php
     $menu = [
         [
-            'display' => 'Home',
-            'link' => '/siswa',
+            'display' => 'Dashboard',
+            'link' => '/admin',
+            'route' => 'admin',
         ],
         [
-            'display' => 'Isi Kegiatan',
-            'link' => '/siswa/kegiatan/insert',
+            'display' => 'Data User',
+            'link' => '/admin/user',
+            'route' => 'admin/user*',
         ],
         [
-            'display' => 'Rekap Kegiatan',
-            'link' => '/siswa/kegiatan/rekap',
-        ]
+            'display' => 'Data Kelas',
+            'link' => '/admin/kelas',
+            'route' => 'admin/kelas*',
+        ],
+        [
+            'display' => 'Data Siswa',
+            'link' => '/admin/siswa',
+            'route' => 'admin/siswa*',
+        ],
+        [
+            'display' => 'Data Guru',
+            'link' => '/admin/guru',
+            'route' => 'admin/guru*',
+        ],
+        [
+            'display' => 'Data Wali Kelas',
+            'link' => '/admin/walikelas',
+            'route' => 'admin/walikelas*',
+        ],
+        [
+            'display' => 'Jadwal Sholat',
+            'link' => '/admin/jadwal-sholat',
+            'route' => 'admin/jadwal-sholat*',
+        ],
     ];
 @endphp
 
@@ -36,6 +59,7 @@
     <button type="button" id="navbar-toggle">
         <img src="{{ asset('icons/ic_round-menu.svg') }}" alt="">
     </button>
+    <img src="{{ asset('icons/logo-primary.svg') }}" width="92" height="41" alt="Logo">
     <button class="flex items-center justify-center p-0.5 bg-[#D9D9D9] aspect-square rounded-full">
         <img src="{{ asset('icons/mynaui_user-solid.svg') }}" alt="">
     </button>

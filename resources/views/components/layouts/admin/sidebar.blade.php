@@ -3,32 +3,44 @@
         [
             'display' => 'Dashboard',
             'link' => '/admin',
-            'route' => 'admin'
+            'route' => 'admin',
+            'icon' => 'icons/dashboard.svg'
         ],
         [
             'display' => 'Data User',
             'link' => '/admin/user',
             'route' => 'admin/user*',
+            'icon' => 'icons/logo-users.svg'
         ],
         [
             'display' => 'Data Kelas',
             'link' => '/admin/kelas',
             'route' => 'admin/kelas*',
+            'icon' => 'icons/logo-kelas.svg'
         ],
         [
             'display' => 'Data Siswa',
             'link' => '/admin/siswa',
             'route' => 'admin/siswa*',
+            'icon' => 'icons/logo-siswa.svg'
         ],
         [
             'display' => 'Data Guru',
             'link' => '/admin/guru',
             'route' => 'admin/guru*',
+            'icon' => 'icons/logo-guru.svg'
         ],
         [
             'display' => 'Data Wali Kelas',
             'link' => '/admin/walikelas',
             'route' => 'admin/walikelas*',
+            'icon' => 'icons/logo-walas.svg'
+        ],
+        [
+            'display' => 'Jadwal Sholat',
+            'link' => '/admin/jadwal-sholat',
+            'route' => 'admin/jadwal-sholat*',
+            'icon' => 'icons/calendar.svg'
         ],
     ];
 @endphp
@@ -46,7 +58,7 @@
             @foreach ($menu as $item)
                 <li class="w-full">
                     <a href={{ $item['link'] }} class="flex items-center gap-3.5 px-5 py-2 w-full rounded-md {{ request()->is($item['route']) ? 'bg-primary text-white' : 'bg-transparent text-primary' }}">
-                        <img src="{{ asset('icons/map_mosque.svg') }}" width="24" height="24" alt="">
+                        <img src="{{ asset($item['icon']) }}" width="24" height="24" alt="">
                         <p class="text-xl font-medium">
                             {{ $item['display'] }}
                         </p>
@@ -55,7 +67,7 @@
             @endforeach
             <li class="w-full">
                 <a href="{{ route('logout') }}" class="flex items-center gap-3.5 px-5 py-2 w-full rounded-md bg-transparent text-primary">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" width="24" height="24" alt="">
+                    <img src="{{ asset('icons/logo-logout.svg') }}" width="24" height="24" alt="">
                     <p class="text-xl font-medium">
                         Logout
                     </p>
