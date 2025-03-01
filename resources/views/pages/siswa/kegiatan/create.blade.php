@@ -46,8 +46,8 @@
                 <p>@error('deskripsi') {{ $message }} @enderror</p>
             </div>
             <div class="flex flex-col gap-3 pt-4">
-                <label for="foto" class="flex items-center justify-center gap-2 bg-white p-2 rounded-md text-sm font-medium">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" width="24" height="24" alt="">
+                <label for="foto" class="flex items-center justify-center gap-2 bg-white p-2 rounded-md text-sm font-medium cursor-pointer">
+                    <img src="{{ asset('icons/prime_upload.svg') }}" width="24" height="24" alt="">
                     <p>Upload Photo</p>
                 </label>
                 <p>@error('foto') {{ $message }} @enderror</p>

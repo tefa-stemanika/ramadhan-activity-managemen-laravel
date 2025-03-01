@@ -16,16 +16,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $query = User::query();
-
-        if ($request->has('search')) {
-            $search = $request->search;
-            $query->where('username', 'like', "%{$search}%")
-                ->orWhere('role', 'like', "%{$search}%");
-        }
-
         return view('pages.admin.user.index', [
-            'data' => $query->orderBy('username')->paginate(20),
+            'data' => \App\Models\User::orderBy('username')->when($request->search, function ($q) use ($request) {
+                $q->where('username', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('role', 'LIKE', '%' . $request->search . '%');
+            })->paginate(20),
         ]);
     }
 

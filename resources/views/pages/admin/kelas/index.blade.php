@@ -12,12 +12,12 @@
             <p class="text-sm md:text-base font-bold">Data Kelas</p>
         </a>
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <form action="{{ route('kelas.index') }}" method="GET" class="flex items-center gap-2.5 w-full md:w-auto">
+            <form class="flex items-center gap-2.5 w-full md:w-auto">
                 <div class="relative w-full md:w-auto">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
-                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari kelas..." class="bg-white w-full md:w-auto rounded-full pl-9 pr-2.5 py-1 border border-primary">
+                    <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari Kelas..." class="w-full md:w-auto bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
                 </div>
-                <button class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
+                <button type="submit" class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
                     Cari
                 </button>
                 @if(request('search'))
@@ -45,6 +45,7 @@
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium">No.</th>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Kode Kelas</th>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Nama Kelas</th>
+                        <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Guru PAI</th>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-medium border-l border-l-[#D9D9D9]">Aksi</th>
                     </tr>
                 </thead>
@@ -54,8 +55,9 @@
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium text-center">{{ $key + 1 }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->kode }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->nama }}</td>
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->Guru->nama }}</td>
                             <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
-                                <a href="#" class="text-primary text-sm font-medium">Detail</a>
+                                <a href="{{ route('kelas.show', $item) }}" class="text-primary text-sm font-medium">Detail</a>
                                 <p>|</p>
                                 <a href="{{ route('kelas.edit', $item) }}" class="text-[#0062FF] text-sm font-medium">Edit</a>
                                 <p>|</p>

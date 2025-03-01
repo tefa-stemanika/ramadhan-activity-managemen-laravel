@@ -12,6 +12,17 @@ class GuruSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $data = [
+            [
+                'id' => '1',
+                'kode' => 'guru1',
+                'nama' => 'guru 1',
+                'username' => 'guru1'
+            ],
+        ];
+
+        foreach ($data as $value) {
+            \App\Models\Guru::create($value);
+        }
     }
 }

@@ -15,12 +15,12 @@
             <div class="grid grid-cols-1 gap-3 col-span-3">
                 <input type="date" value="{{ old('tanggal') }}" name="tanggal" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
                 <div class="relative">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                    <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
                     <input type="search" name="search" value="{{ old('search') }}" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
                 </div>
             </div>
             <button type="submit" class="bg-primary rounded-md w-full p-2 text-white">
-                filter
+                Filter
             </button>
         </form>
         <div class="mt-5 overflow-x-scroll">
@@ -42,14 +42,13 @@
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->jenis_kegiatan }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->deskripsi }}</td>
-                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
-                                <button onclick="showPhotoPopup('{{ $item->foto }}')">
-                                    lihat
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-[#1865FF] text-sm font-semibold border-l border-l-[#D9D9D9] text-center">
+                                <button onclick="showPhotoPopup('{{ $item->foto }}')" class="flex items-center gap-3">
+                                    <img src="{{asset('icons/mdi-light_eye.svg')}}" alt="">
+                                    Lihat
                                 </button>
                             </td>
-                            <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
-                                <a href="#" class="text-[#0062FF] text-sm font-medium">Edit</a>
-                                <p>|</p>
+                            <td class="flex items-center justify-center bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
                                 <a onclick="return confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')" href="{{ route('siswa.kegiatan.destroy', $item) }}" class="text-[#FF0000] text-sm font-medium">Hapus</a>
                             </td>
                         </tr>

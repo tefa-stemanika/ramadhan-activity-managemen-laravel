@@ -18,10 +18,10 @@ class GuruController extends Controller
     {
         $query = Guru::query();
 
-        if ($request->has('q')) {
-            $query->where('kode', 'like', "%{$request->q}%")
-                ->orWhere('nama', 'like', "%{$request->q}%")
-                ->orWhere('username', 'like', "%{$request}%");
+        if ($request->has('search')) {
+            $query->where('kode', 'like', "%$request->search%")
+                ->orWhere('nama', 'like', "%$request->search%")
+                ->orWhere('username', 'like', "%$request->search%");
         }
 
         $guru = $query->paginate(20);

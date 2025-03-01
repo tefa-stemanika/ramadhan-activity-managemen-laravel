@@ -23,7 +23,8 @@ class KelasCreateRequest extends FormRequest
     {
         return [
             'kode' => ['required', 'string', 'unique:kelas,kode'],
-            'nama' => ['required', 'max:255', 'string']
+            'nama' => ['required', 'max:255', 'string'],
+            'kode_guru' => ['required', 'string', 'exists:guru,kode'],
         ];
     }
 }

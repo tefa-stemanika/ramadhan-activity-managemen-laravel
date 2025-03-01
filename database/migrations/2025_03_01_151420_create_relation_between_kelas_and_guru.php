@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelas', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('kode')->unique();
-            $table->string('nama');
-            $table->string('kode_guru')->nullable();
-            $table->timestamps();
+        Schema::table('kelas', function (Blueprint $table) {
+            $table->foreign('kode_guru')->references('kode')->on('guru')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kelas');
+        Schema::table('kelas', function (Blueprint $table) {
+            $table->dropForeign(['kode_guru']);
+        });
     }
 };

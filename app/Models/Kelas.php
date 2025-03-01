@@ -21,8 +21,9 @@ class Kelas extends Model
     protected $fillable = [
         'kode',
         'nama',
+        'kode_guru',
     ];
-    
+
     public function Siswa()
     {
         return $this->hasMany(Siswa::class, 'kode_kelas', 'kode');
@@ -31,5 +32,10 @@ class Kelas extends Model
     public function walikelas()
     {
         return $this->hasOne(WaliKelas::class, 'kode_kelas', 'kode');
+    }
+
+    public function Guru()
+    {
+        return $this->belongsTo(Guru::class, 'kode_guru', 'kode');
     }
 }
