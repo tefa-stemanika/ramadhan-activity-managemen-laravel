@@ -18,7 +18,7 @@
     @include('components.layouts.admin.sidebar')
 
     <section class="lg:ml-80 flex items-center justify-between px-12 py-7 bg-[#F5F5F5]">
-        <h1 class="text-2xl font-bold">Dashboard</h1>
+        <h1 class="text-2xl font-bold">@yield('title')</h1>
         <button class="flex items-center justify-center p-0.5 bg-[#D9D9D9] aspect-square rounded-full">
             <img src="{{ asset('icons/mynaui_user-solid.svg') }}" alt="">
         </button>
