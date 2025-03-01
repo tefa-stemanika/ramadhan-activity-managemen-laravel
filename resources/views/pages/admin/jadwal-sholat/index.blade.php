@@ -36,15 +36,6 @@
                     'action' => route('jadwal-sholat.import')
             ])
         </div>
-        <form class="flex items-center gap-2.5">
-            <div class="relative">
-                <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
-                <input type="search" name="q" value="{{ request('q') }}" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
-            </div>
-            <button type="button" class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
-                Cari
-            </button>
-        </form>
     </div>
     @include('components.shared.tables.import-error')
     <div class="mt-5 overflow-x-scroll">
