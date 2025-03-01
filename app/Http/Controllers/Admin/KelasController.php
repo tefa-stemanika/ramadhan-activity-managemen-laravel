@@ -14,10 +14,19 @@ class KelasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Kelas::query();
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where('kode', 'like', "%{$search}%")
+                ->orWhere('nama', 'like', "%{$search}%")
+                ->orWhere('username', 'like', "%{$search}%");
+        }
+
         return view('pages.admin.kelas.index', [
-            'data' => Kelas::orderBy('nama')->paginate(20)
+            'data' => $query->orderBy('nama')->paginate(20)
         ]);
     }
 

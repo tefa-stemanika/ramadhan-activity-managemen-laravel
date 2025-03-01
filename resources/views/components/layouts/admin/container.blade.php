@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('icons/logo-primary.svg') }}">
+    <title>@yield('title') - Karomah</title>
     <script src="https://unpkg.com/feather-icons"></script>
     @notifyCss
     @env('production')
