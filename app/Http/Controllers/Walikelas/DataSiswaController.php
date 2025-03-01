@@ -30,7 +30,7 @@ class DataSiswaController extends Controller
     }
 
     public function show(String $nis, Request $request) {
-         $data = Siswa::where('nis', $nis)->firstOrFail();
+        $data = Siswa::where('nis', $nis)->firstOrFail();
 
         $search = $request->input('search');
         $tanggal = $request->input('tanggal');
