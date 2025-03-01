@@ -19,12 +19,12 @@
                     'action' => route('siswa.import')
                 ])
             </div>
-            <form action="{{ route('siswa.index') }}" method="GET" class="flex items-center gap-2.5">
-                <div class="relative">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
-                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari siswa..." class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
+            <form class="flex items-center gap-2.5 w-full md:w-auto">
+                <div class="relative w-full md:w-auto">
+                    <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari Siswa..." class="w-full md:w-auto bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
                 </div>
-                <button class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
+                <button type="submit" class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
                     Cari
                 </button>
                 @if(request('search'))
@@ -34,6 +34,7 @@
                 @endif
             </form>
         </div>
+        @include('components.shared.tables.import-error')
         <div class="mt-5 overflow-x-scroll">
             <table class="min-w-full w-max">
                 <thead>

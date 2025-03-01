@@ -27,8 +27,8 @@ class KelasImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
     {
         return new Kelas([
             'kode' => $row['kode'],
-            'nama' => Hash::make($row['nama']),
-            'username' => $row['username']
+            'nama' => $row['nama'],
+            'kode_guru' => $row['kode_guru']
         ]);
     }
 
@@ -42,7 +42,7 @@ class KelasImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
         return [
             '*.kode' => ['required', 'max:255', 'unique:kelas,kode'],
             '*.nama' => ['required', 'max:255',],
-            '*.username' => ['required', 'exists:users,username']
+            '*.kode_guru' => ['required', 'exists:guru,kode']
         ];
     }
 
@@ -51,11 +51,10 @@ class KelasImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
         return [
             '*.kode.unique' => ':attribute sudah digunakan oleh kelas lain!',
             '*.kode.required' => ':attribute dibutuhkan!',
-            '*.username.max' => ':attribute maksimal memiliki 255 karakter!',
             '*.nama.required' => ':attribute dibutuhkan!',
             '*.nama.max' => ':attribute maksimal memiliki 255 karakter!',
-            '*.username.required' => ':attribute dibutuhkan!',
-            '*.username.exists' => ':attribute tidak ditemukan!'
+            '*.kode_guru.required' => ':attribute dibutuhkan!',
+            '*.kode_guru.exists' => ':attribute tidak ditemukan!'
         ];
     }
 }

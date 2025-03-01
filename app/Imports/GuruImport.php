@@ -27,7 +27,7 @@ class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFail
     {
         return new Guru([
             'kode' => $row['kode'],
-            'nama' =>$row['nama'],
+            'nama' => $row['nama'],
             'username' => $row['username']
         ]);
     }
@@ -40,9 +40,9 @@ class GuruImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFail
     public function rules(): array
     {
         return [
-            '*.kode' => ['required', 'max:255', 'unique:guru:kode'],
+            '*.kode' => ['required', 'max:255', 'unique:guru,kode'],
             '*.nama' => ['required', 'max:255',],
-            '*.username' => ['required', 'unique:guru:username', 'exists:users,username']
+            '*.username' => ['required', 'unique:guru,username', 'exists:users,username']
         ];
     }
 

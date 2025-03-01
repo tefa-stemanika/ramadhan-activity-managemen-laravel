@@ -49,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('kelas')->group(function () {
             Route::get('/', [App\Http\Controllers\Admin\KelasController::class, 'index'])->name('kelas.index');
+            Route::get('/{kelas}', [App\Http\Controllers\Admin\KelasController::class, 'show'])->name('kelas.show');
+            Route::get('/{kelas}/{siswa}', [App\Http\Controllers\Admin\KelasController::class, 'detail_kegiatan'])->name('kelas.detail-kegiatan');
             Route::get('/create', [App\Http\Controllers\Admin\KelasController::class, 'create'])->name('kelas.create');
             Route::get('/{kelas}/edit', [App\Http\Controllers\Admin\KelasController::class, 'edit'])->name('kelas.edit');
             Route::post('/store', [App\Http\Controllers\Admin\KelasController::class, 'store'])->name('kelas.store');

@@ -25,7 +25,7 @@ class KelasUpdateRequest extends FormRequest
         return [
             'kode' => ['required', 'string', Rule::unique('kelas', 'kode')->ignore($this->kelas)],
             'nama' => ['required', 'max:255', 'string'],
-            'kode_guru' => ['required', 'string', 'exists:guru,kode', Rule::unique('kelas', 'kode_guru')->ignore($this->kelas)],
+            'kode_guru' => ['required', 'string', 'exists:guru,kode'],
         ];
     }
 }

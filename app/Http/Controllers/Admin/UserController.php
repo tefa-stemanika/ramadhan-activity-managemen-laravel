@@ -14,10 +14,13 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('pages.admin.user.index', [
-            'data' => \App\Models\User::orderBy('username')->paginate(20),
+            'data' => \App\Models\User::orderBy('username')->when($request->search, function ($q) use ($request) {
+                $q->where('username', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('role', 'LIKE', '%' . $request->search . '%');
+            })->paginate(20),
         ]);
     }
 

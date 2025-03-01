@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Imports\JadwalSholatImport;
 use App\Models\JadwalSholat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class JadwalSholatController extends Controller
@@ -13,30 +14,31 @@ class JadwalSholatController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-{
-    $query = JadwalSholat::query();
+    {
+        $query = JadwalSholat::query();
 
-    if ($request->has('q')) {
-        $query->where('tanggal', 'like', "%{$request->q}%");
+        if ($request->has('search')) {
+            $parsedTanggal = Carbon::parse($request->search)->format('Y-m-d');
+            $query->whereDate('tanggal', 'like', "%$parsedTanggal%");
+        }
+
+        $jadwal_sholat = $query->get()->map(function ($jadwal) {
+            return [
+                'id' => $jadwal->id,
+                'tanggal' => \Carbon\Carbon::parse($jadwal->tanggal)->format('d-m-Y'),
+                'imsak' => \Carbon\Carbon::parse($jadwal->imsak)->format('H:i'),
+                'subuh' => \Carbon\Carbon::parse($jadwal->subuh)->format('H:i'),
+                'terbit' => \Carbon\Carbon::parse($jadwal->terbit)->format('H:i'),
+                'dhuha' => \Carbon\Carbon::parse($jadwal->dhuha)->format('H:i'),
+                'dzuhur' => \Carbon\Carbon::parse($jadwal->dzuhur)->format('H:i'),
+                'ashar' => \Carbon\Carbon::parse($jadwal->ashar)->format('H:i'),
+                'maghrib' => \Carbon\Carbon::parse($jadwal->maghrib)->format('H:i'),
+                'isya' => \Carbon\Carbon::parse($jadwal->isya)->format('H:i'),
+            ];
+        });
+
+        return view('pages.admin.jadwal-sholat.index', compact('jadwal_sholat'));
     }
-
-    $jadwal_sholat = $query->get()->map(function ($jadwal) {
-        return [
-            'id' => $jadwal->id,
-            'tanggal' => \Carbon\Carbon::parse($jadwal->tanggal)->format('d-m-Y'),
-            'imsak' => \Carbon\Carbon::parse($jadwal->imsak)->format('H:i'),
-            'subuh' => \Carbon\Carbon::parse($jadwal->subuh)->format('H:i'),
-            'terbit' => \Carbon\Carbon::parse($jadwal->terbit)->format('H:i'),
-            'dhuha' => \Carbon\Carbon::parse($jadwal->dhuha)->format('H:i'),
-            'dzuhur' => \Carbon\Carbon::parse($jadwal->dzuhur)->format('H:i'),
-            'ashar' => \Carbon\Carbon::parse($jadwal->ashar)->format('H:i'),
-            'maghrib' => \Carbon\Carbon::parse($jadwal->maghrib)->format('H:i'),
-            'isya' => \Carbon\Carbon::parse($jadwal->isya)->format('H:i'),
-        ];
-    });
-
-    return view('pages.admin.jadwal-sholat.index', compact('jadwal_sholat'));
-}
 
 
     /**
@@ -103,7 +105,7 @@ class JadwalSholatController extends Controller
             'maghrib' => $request->maghrib,
             'isya' => $request->isya,
         ]);
-        
+
         notify()->success("Jadwal sholat berhasil diubah!");
         return redirect()->route('jadwal-sholat.index');
     }

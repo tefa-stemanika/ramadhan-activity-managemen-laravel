@@ -7,6 +7,7 @@ use App\Http\Requests\KelasCreateRequest;
 use App\Http\Requests\KelasUpdateRequest;
 use App\Imports\KelasImport;
 use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -14,10 +15,13 @@ class KelasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('pages.admin.kelas.index', [
-            'data' => Kelas::orderBy('nama')->paginate(20)
+            'data' => Kelas::orderBy('nama')->when($request->search, function ($q) use ($request) {
+                $q->where('kode', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('nama', 'LIKE', '%' . $request->search . '%');
+            })->paginate(20)
         ]);
     }
 
@@ -44,9 +48,18 @@ class KelasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Kelas $kelas)
     {
-        //
+        return view('pages.admin.kelas.detail', [
+            'data' => $kelas
+        ]);
+    }
+
+    public function detail_kegiatan(Kelas $kelas, Siswa $siswa)
+    {
+        return view('pages.admin.kelas.detail-kegiatan-siswa', [
+            'data' => $siswa,
+        ]);
     }
 
     /**

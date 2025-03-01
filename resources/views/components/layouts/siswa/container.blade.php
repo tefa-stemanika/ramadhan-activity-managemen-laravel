@@ -15,7 +15,7 @@
 <body class="max-w-[720px] mx-auto bg-white pb-6">
     @include('components.layouts.siswa.navbar')
     
-    <main class="px-6 mt-24">
+    <main class="px-6 mt-32 lg:mt-0">
         @yield('main')
     </main>
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('kode')->unique();
             $table->string('nama');
-            $table->string('kode_guru')->unique()->nullable();
+            $table->string('kode_guru')->nullable();
             $table->timestamps();
         });
     }
