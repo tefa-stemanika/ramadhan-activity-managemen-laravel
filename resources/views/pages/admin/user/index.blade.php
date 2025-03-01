@@ -1,16 +1,9 @@
 @extends('components.layouts.admin.container')
-@section('title')
-    Data User
-@endsection
+
+@section('title', "Data User")
 
 @section('main')
     <section>
-        <a href="{{ url()->previous() }}" class="flex items-center gap-4 mb-6 md:mb-12">
-            <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
-            </div>
-            <p class="text-sm md:text-base font-bold">Data User</p>
-        </a>
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <form class="flex items-center gap-2.5 w-full md:w-auto">
                 <div class="relative w-full md:w-auto">
@@ -28,7 +21,7 @@
             </form>
             <div class="flex items-center gap-2.5">
                 <a href="user/create" class="flex items-center gap-4 px-5 py-2 rounded bg-transparent border border-primary text-primary">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
+                    <img src="{{ asset('icons/plus.svg') }}" alt="mosque icon" width="20" height="20">
                     <p class="text-sm font-bold">Tambah Data</p>
                 </a>
                 @include('components.shared.modals.import', [

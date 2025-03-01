@@ -59,6 +59,7 @@ class KelasController extends Controller
     {
         return view('pages.admin.kelas.detail-kegiatan-siswa', [
             'data' => $siswa,
+            'kelas' => $kelas,
         ]);
     }
 

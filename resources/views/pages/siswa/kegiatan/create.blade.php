@@ -18,13 +18,15 @@
             'Penutupan',
         ];
     @endphp
-    <section>
-        <a href="{{ route('siswa.home') }}" class="flex items-center gap-4">
-            <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
+    <section class="mb-10">
+        <div class="flex gap-x-4 items-center">
+            <div class="flex gap-x-7 items-center">
+                <a href="{{ url()->previous() }}" class="flex items-center justify-center bg-primary size-7 rounded-lg">
+                    <img src="{{ asset('icons/chevron-left.svg') }}" alt="Prev Button" class="size-2.5">
+                </a>
+                <h2 class="text-black text-base font-bold">Buat Kegiatan</h2>
             </div>
-            <p class="text-sm font-bold">Kegiatan</p>
-        </a>
+        </div>
     </section>
 
     <section class="mt-11">

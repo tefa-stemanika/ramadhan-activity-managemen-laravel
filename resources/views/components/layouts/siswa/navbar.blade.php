@@ -11,10 +11,15 @@
             'route' => 'siswa/kegiatan/create'
         ],
         [
+            'display' => 'Jadwal Sholat',
+            'link' => '/siswa/jadwal-sholat',
+            'route' => 'siswa/jadwal-sholat'
+        ],
+        [
             'display' => 'Rekap Kegiatan',
             'link' => '/siswa/kegiatan/rekap',
             'route' => 'siswa/kegiatan/rekap'
-        ]
+        ],
     ];
 @endphp
 

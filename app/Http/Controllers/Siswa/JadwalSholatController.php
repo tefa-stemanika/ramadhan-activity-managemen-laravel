@@ -13,7 +13,7 @@ class JadwalSholatController extends Controller
      */
     public function index()
     {
-        return view('pages.siswa.jadwa-sholat', [
+        return view('pages.siswa.jadwal-sholat', [
             'data' => JadwalSholat::whereDate('tanggal', now())->first()
         ]);
     }

@@ -41,7 +41,7 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
         return [
             '*.nis' => ['required', 'integer', 'digits_between:1,10', 'unique:siswa,nis'],
             '*.nama' => ['required', 'string', 'max:255'],
-            '*.username' => ['required', 'string', 'exists:users,username', 'unique:siswa,username'],
+            '*.username' => ['required', 'exists:users,username', 'unique:siswa,username'],
             '*.kode_kelas' => ['required', 'string', 'exists:kelas,kode']
         ];
     }

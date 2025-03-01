@@ -1,27 +1,9 @@
 @extends('components.layouts.admin.container')
+
 @section('title', 'Data Guru')
+@section('nestedTitle', "Edit")
 
 @section('main')
-    <section>
-        <div class="flex space-x-2 md:space-x-8 mb-6 mb:12">
-                <a href="{{ route('guru.index') }}" class="flex items-center gap-4">
-                    <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                        <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
-                    </div>
-                    <p class="text-sm md:text-base font-bold text-mist">Guru PABP</p>
-                </a>
-            <a href="{{ route('guru.index') }}" class="flex items-center gap-4">
-                <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="8" height="8" alt="" class="w-4">
-            </a>
-        </section>
-        
-        <a href="{{ route('guru.index') }}" class="flex items-center gap-4">
-            <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="8" height="8" alt="" class="w-4">
-        </a>
-
-        <p class="text-base font-bold">Edit Guru PABP</p>
-    </div>
-
     <section class="mt-11">
         <form action="{{ route('guru.update', $guru) }}" method="POST" class="bg-white p-15 space-y-6 rounded-md border-[1.5px] border-[#D9D9D9] max-w-[750px]">
             @csrf
