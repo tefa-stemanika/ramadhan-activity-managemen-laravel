@@ -15,7 +15,9 @@
     @endenv
 </head>
 <body class="bg-white max-w-[3000px] mx-auto">
-    @include('components.layouts.admin.sidebar')
+    <div class="hidden md:block">
+        @include('components.layouts.admin.sidebar')
+    </div>
 
     <section class="lg:ml-80 flex items-center justify-between px-12 py-7 bg-[#F5F5F5]">
         <h1 class="text-2xl font-bold">@yield('title')</h1>

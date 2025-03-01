@@ -51,7 +51,7 @@ class WalikelasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Walikelas $walas)
     {
         //
     }
@@ -59,19 +59,17 @@ class WalikelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Walikelas $walas)
     {
-        $walas = Walikelas::where('id', $id)->firstOrFail();
         return view('pages.admin.walikelas.edit', compact('walas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(WalikelasUpdateRequest $request, string $id)
+    public function update(WalikelasUpdateRequest $request, Walikelas $walas)
     {
-        $walas = Walikelas::where('id', $id)->firstOrFail();
-        $walas ->update($request->validated());
+        $walas->update($request->validated());
 
         notify()->success('Data walikelas berhasil diperbarui');
 
@@ -81,21 +79,22 @@ class WalikelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Walikelas $walas)
     {
-        $walas = Walikelas::where('id', $id)->firstOrFail();
         $walas->delete();
 
         notify()->success('Walikelas berhasil dihapus');
+
         return redirect()->route('walikelas.index');
     }
 
-    public function import(Request $request) {
+    public function import(Request $request)
+    {
         $walas = new WalikelasImport();
 
         $walas->import($request->excel);
 
-        if($walas->failures()->isNotEmpty()) {
+        if ($walas->failures()->isNotEmpty()) {
             return back()->withFailures($walas->failures());
         }
 

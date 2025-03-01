@@ -12,7 +12,7 @@ class SiswaUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -22,11 +22,11 @@ class SiswaUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-       return [
-            'nis' => ['required', 'integer', 'digits_between:1,10',Rule::unique('siswa', 'nis')->ignore($this->nis, 'nis')],
+        return [
+            'nis' => ['required', 'integer', 'digits_between:1,10', Rule::unique('siswa', 'nis')->ignore($this->siswa)],
             'nama' => ['required', 'string', 'max:255'],
-            'username' => ['nullable', 'string', 'exists:users,username'],
-            'kode_kelas' => ['nullable', 'string', 'exists:kelas,kode']
+            'username' =>  ['required', 'string', 'exists:users,username', Rule::unique('siswa', 'username')->ignore($this->siswa)],
+            'kode_kelas' => ['required', 'string', 'exists:kelas,kode']
         ];
     }
 }

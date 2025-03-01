@@ -11,7 +11,7 @@ class WalikelasCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -22,10 +22,10 @@ class WalikelasCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kode' => ['required','string', 'unique:walikelas,kode'],
-            'nama' => ['required', 'string', 'max:255'],    
-            'kode_kelas' => ['nullable','string','exists:kelas,kode'],
-            'username' => ['nullable', 'string', 'exists:users,username'],
+            'kode' => ['required', 'string', 'max:255', 'unique:walikelas,kode'],
+            'nama' => ['required', 'string', 'max:255'],
+            'kode_kelas' => ['nullable', 'string', 'exists:kelas,kode', 'unique:walikelas,kode_kelas'],
+            'username' => ['nullable', 'string', 'exists:users,username', 'unique:walikelas,username'],
         ];
     }
 }

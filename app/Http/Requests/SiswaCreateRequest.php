@@ -11,7 +11,7 @@ class SiswaCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -22,10 +22,10 @@ class SiswaCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nis' => ['required','integer','digits_between:1,10','unique:siswa,nis'],
+            'nis' => ['required', 'integer', 'digits_between:1,10', 'unique:siswa,nis'],
             'nama' => ['required', 'string', 'max:255'],
-            'username' =>  ['nullable','string','exists:users,username'],
-            'kode_kelas' => ['nullable','string','exists:kelas,kode']
+            'username' =>  ['required', 'string', 'exists:users,username', 'unique:siswa,username'],
+            'kode_kelas' => ['required', 'string', 'exists:kelas,kode']
         ];
     }
 }
