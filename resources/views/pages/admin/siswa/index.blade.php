@@ -1,7 +1,6 @@
 @extends('components.layouts.admin.container')
-@section('title')
-    Data Siswa
-@endsection
+
+@section('title', "Data Siswa")
 
 @section('main')
     <section>
@@ -22,7 +21,7 @@
             </form>
             <div class="flex items-center gap-2.5">
                 <a href={{ route('siswa.create') }} class="flex items-center gap-4 px-5 py-2 rounded bg-transparent border border-primary text-primary">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
+                    <img src="{{ asset('icons/plus.svg') }}" alt="mosque icon" width="20" height="20">
                     <p class="text-sm font-bold">Tambah Data</p>
                 </a>
                 @include('components.shared.modals.import', [

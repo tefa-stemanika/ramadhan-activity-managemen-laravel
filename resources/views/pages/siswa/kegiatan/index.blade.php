@@ -1,27 +1,29 @@
 @extends('components.layouts.siswa.container')
 
 @section('main')
-    <section>
-        <a href="{{ route('siswa.home') }}" class="flex items-center gap-4">
-            <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
+    <section class="mb-10">
+        <div class="flex gap-x-4 items-center">
+            <div class="flex gap-x-7 items-center">
+                <a href="{{ url()->previous() }}" class="flex items-center justify-center bg-primary size-7 rounded-lg">
+                    <img src="{{ asset('icons/chevron-left.svg') }}" alt="Prev Button" class="size-2.5">
+                </a>
+                <h2 class="text-black text-base font-bold">Rekap Kegiatan</h2>
             </div>
-            <p class="text-sm font-bold">Rekap Kegiatan</p>
-        </a>
+        </div>
     </section>
 
     <section class="mt-11">
-        <form action="" method="get" class="grid grid-cols-4 gap-3">
-            <div class="grid grid-cols-1 gap-3 col-span-3">
-                <input type="date" value="{{ old('tanggal') }}" name="tanggal" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
-                <div class="relative">
-                    <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
-                    <input type="search" name="search" value="{{ old('search') }}" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
-                </div>
+        <form action="" method="get" class="grid items-center grid-cols-1 gap-3">
+            <input type="date" value="{{ old('tanggal') }}" name="tanggal" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
+            <div class="relative">
+                <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                <input type="search" name="search" value="{{ old('search') }}" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
             </div>
-            <button type="submit" class="bg-primary rounded-md w-full p-2 text-white">
-                Filter
-            </button>
+            <div class="flex">
+                <button type="submit" class="bg-primary rounded-md px-5 py-2 text-white">
+                    Filter
+                </button>
+            </div>
         </form>
         <div class="mt-5 overflow-x-scroll">
             <table class="min-w-full w-max">

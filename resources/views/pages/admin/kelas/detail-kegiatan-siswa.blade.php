@@ -1,5 +1,8 @@
 @extends('components.layouts.admin.container')
 
+@section('title', $kelas->nama)
+@section('nestedTitle', $data->nama)
+
 @section('main')
     <section>
         <div class="flex items-center justify-end">

@@ -1,14 +1,9 @@
 @extends('components.layouts.admin.container')
-@section('title', 'Data Walikelas')
+
+@section('title', "Data Wali Kelas")
 
 @section('main')
     <section>
-         <div class="mb-6 md:mb-12">
-            <div class="flex gap-x-4 items-center">
-                <a href="{{ url()->previous() }}"><i data-feather="chevron-left" class="bg-primary rounded-[5px]  text-white"></i></a>
-                <p class="text-sm md:text-base font-bold">Data Walikelas</p>
-            </div>
-        </div>
         <div class="flex flex-col space-y-6 md:space-y-0 md:items-center md:justify-between md:flex-row">
             <form class="flex items-center gap-2.5 w-full md:w-auto">
                 <div class="relative w-full md:w-auto">
@@ -26,7 +21,7 @@
             </form>
             <div class="flex items-center gap-2.5">
                 <a href="walikelas/create" class="flex items-center gap-4  px-5 py-2 rounded bg-transparent border border-primary text-primary">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
+                    <img src="{{ asset('icons/plus.svg') }}" alt="mosque icon" width="20" height="20">
                     <p class="text-sm font-bold">Tambah Data</p>
                 </a>
                 @include('components.shared.modals.import', [

@@ -1,4 +1,5 @@
 @extends('components.layouts.admin.container')
+
 @section('title')
     Dashboard
 @endsection
