@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Walikelas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Walikelas;
+use App\Models\Kegiatan;
 
 class HomeController extends Controller
 {

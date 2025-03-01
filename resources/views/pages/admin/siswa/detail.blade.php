@@ -51,7 +51,7 @@
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->jenis_kegiatan }}</td>
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->deskripsi }}</td>
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9] ">
-                            <button type="button" onclick="showPhotoPopup('{{ asset($item->foto) }}')" class="foto-kegiatan flex justify-center gap-x-2 items-center px-2.5 py-[5px] text-sm font-semibold text-[#6B18FF] ">
+                            <button type="button" onclick="showPhotoPopup('{{ $item->foto }}')" class="foto-kegiatan flex justify-center gap-x-2 items-center px-2.5 py-[5px] text-sm font-semibold text-[#6B18FF] ">
                                 <i data-feather="eye" class="feather-16"></i>Lihat
                             </button>
                         </td>
