@@ -26,7 +26,7 @@ class CheckRole
             case 'guru':
                 return redirect()->route('admin.home');
             case 'walikelas':
-                return redirect()->route('admin.home');
+                return redirect()->route('walikelas.home');
         }
     }
 }

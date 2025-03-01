@@ -36,6 +36,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/kegiatan/rekap', [App\Http\Controllers\Siswa\KegiatanController::class, 'index'])->name('siswa.kegiatan.rekap');
     });
 
+    Route::prefix('walikelas')->middleware(['role:walikelas'])->group(function () {
+        Route::get('/', [App\Http\Controllers\Walikelas\HomeController::class, 'index'])->name('walikelas.home');
+        Route::get('/siswa', [App\Http\Controllers\Walikelas\DataSiswaController::class, 'index'])->name('walikelas.data.siswa');
+        Route::get('/siswa/kegiatan/{nis}', [App\Http\Controllers\Walikelas\DataSiswaController::class, 'show'])->name('walikelas.data.siswa.kegiatan');
+        Route::get('/jadwal-sholat', [App\Http\Controllers\Walikelas\JadwalSholatController::class, 'index'])->name('walikelas.jadwal-sholat');
+        Route::get('/chart-data', [App\Http\Controllers\Walikelas\HomeController::class, 'chartData'])->name('chart.data');
+    });
+
     Route::prefix('admin')->middleware(['role:admin'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.home');
 

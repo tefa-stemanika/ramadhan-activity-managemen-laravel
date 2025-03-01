@@ -7,3 +7,6 @@ document.querySelectorAll("#navbar-toggle").forEach((element) => {
             .classList.toggle("hidden");
     });
 });
+
+import Chart from "chart.js/auto";
+window.Chart = Chart;
