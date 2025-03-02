@@ -1,6 +1,6 @@
 @extends('components.layouts.siswa.container')
 
-@section('title', 'Home')
+@section('title', 'Dashboard Siswa')
 @section('show', 'false')
 
 @section('main')

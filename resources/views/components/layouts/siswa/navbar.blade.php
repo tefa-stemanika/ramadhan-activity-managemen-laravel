@@ -6,6 +6,11 @@
             'route' => 'siswa'
         ],
         [
+            'display' => 'Profile',
+            'link' => '/siswa/profile',
+            'route' => 'siswa/profile'
+        ],
+        [
             'display' => 'Isi Kegiatan',
             'link' => '/siswa/kegiatan/create',
             'route' => 'siswa/kegiatan/create'
@@ -50,7 +55,9 @@
         <img src="{{ asset('icons/ic_round-menu.svg') }}" alt="">
     </button>
     <img src="{{ asset('icons/logo-primary.svg') }}" width="92" height="41" alt="Logo">
-    <button class="flex items-center justify-center p-0.5 bg-[#D9D9D9] aspect-square rounded-full">
-        <img src="{{ asset('icons/mynaui_user-solid.svg') }}" alt="">
-    </button>
+    <a href="{{ route('siswa.profile') }}">
+        <button class="flex items-center justify-center p-0.5 bg-[#D9D9D9] aspect-square rounded-full">
+            <img src="{{ asset('icons/mynaui_user-solid.svg') }}" alt="">
+        </button>
+    </a>
 </header>

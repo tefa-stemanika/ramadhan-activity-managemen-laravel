@@ -20,7 +20,6 @@
             'Penutupan',
         ];
     @endphp
-
     <section>
         <form action="{{ route('siswa.kegiatan.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-5 bg-primary/10 rounded-md py-10 px-5">
             @csrf

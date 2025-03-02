@@ -6,6 +6,16 @@
             'route' => 'guru'
         ],
         [
+            'display' => 'Profile',
+            'link' => '/guru/profile',
+            'route' => 'guru/profile*'
+        ],
+        [
+            'display' => 'Jadwal Sholat',
+            'link' => '/guru/jadwal-sholat',
+            'route' => 'guru/jadwal-sholat*'
+        ],
+        [
             'display' => 'Rekap Kegiatan Kelas',
             'link' => '/guru/kelas',
             'route' => 'guru/kelas*'

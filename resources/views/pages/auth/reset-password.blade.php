@@ -1,4 +1,12 @@
-@extends('components.layouts.guru.container')
+@php
+    $layout = match(auth()->user()->role ?? '') {
+        'siswa' => 'components.layouts.siswa.container',
+        'guru' => 'components.layouts.guru.container',
+        'walikelas' => 'components.layouts.walikelas.container', // Layout default jika role tidak sesuai
+    };
+@endphp
+
+@extends($layout)
 
 @section('title', 'Profil')
 @section('nestedTitle', 'Ganti Password')

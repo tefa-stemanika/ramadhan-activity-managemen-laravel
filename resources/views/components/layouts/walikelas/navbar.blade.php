@@ -6,6 +6,16 @@
             'route' => 'walikelas.home'
         ],
         [
+            'display' => 'Profile',
+            'link' => '/walikelas/profile',
+            'route' => 'walikelas.profile'
+        ],
+        [
+            'display' => 'Jadwal Sholat',
+            'link' => '/walikelas/jadwal-sholat',
+            'route' => 'walikelas.jadwal-sholat'
+        ],
+        [
             'display' => 'Rekap Kegiatan Siswa',
             'link' => '/walikelas/siswa',
             'route' => 'walikelas.data.siswa'
@@ -40,7 +50,9 @@
         <img src="{{ asset('icons/ic_round-menu.svg') }}" alt="">
     </button>
     <img src="{{ asset('icons/logo-primary.svg') }}" width="92" height="41" alt="Logo">
-    <button class="flex items-center justify-center p-0.5 bg-[#D9D9D9] aspect-square rounded-full">
-        <img src="{{ asset('icons/mynaui_user-solid.svg') }}" alt="">
-    </button>
+    <a href="{{ route('walikelas.profile') }}">
+        <button class="flex items-center justify-center p-0.5 bg-[#D9D9D9] aspect-square rounded-full">
+            <img src="{{ asset('icons/mynaui_user-solid.svg') }}" alt="">
+        </button>
+    </a>
 </header>

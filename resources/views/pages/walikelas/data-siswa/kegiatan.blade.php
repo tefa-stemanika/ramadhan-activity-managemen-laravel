@@ -1,15 +1,10 @@
 @extends('components.layouts.walikelas.container')
 
+@section('title', 'Rekap Kegiatan')
+@section('nestedTitle', $data->nama)
+
 @section('main')
     <section>
-        <div class="mb-[40px]">
-            <div class="flex gap-x-4 items-center">
-                <a href="{{ route('walikelas.data.siswa') }}"><i data-feather="chevron-left" class="bg-primary rounded-[5px] text-white"></i></a>
-                <p class="text-lg text-gray-500 font-bold">Data Siswa</p>
-                <i data-feather="chevron-right" class="text-gray-500"></i>
-                <p class="text-lg  font-bold">{{ $data->nama }}</p>
-            </div>
-        </div>
         <div class="grid gap-y-4    ">
             <form action="{{ route('walikelas.data.siswa.kegiatan', $data->nis) }}" method="get">
                 @csrf
