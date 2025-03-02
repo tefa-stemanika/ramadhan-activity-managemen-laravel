@@ -41,7 +41,7 @@ class KegiatanCreateRequest extends FormRequest
         return [
             'jenis_kegiatan' => ['required', Rule::in($jenisKegiatan)],
             'deskripsi' => ['nullable', 'string'],
-            'foto' => ['required', 'mimes:png,jpg,jpeg,svg', 'max:2048'],
+            'foto' => ['required', 'mimes:png,jpg,jpeg', 'max:2048'],
         ];
     }
 }

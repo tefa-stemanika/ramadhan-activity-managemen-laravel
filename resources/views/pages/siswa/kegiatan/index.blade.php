@@ -1,18 +1,9 @@
 @extends('components.layouts.siswa.container')
 
-@section('main')
-    <section class="mb-10">
-        <div class="flex gap-x-4 items-center">
-            <div class="flex gap-x-7 items-center">
-                <a href="{{ url()->previous() }}" class="flex items-center justify-center bg-primary size-7 rounded-lg">
-                    <img src="{{ asset('icons/chevron-left.svg') }}" alt="Prev Button" class="size-2.5">
-                </a>
-                <h2 class="text-black text-base font-bold">Rekap Kegiatan</h2>
-            </div>
-        </div>
-    </section>
+@section('title', 'Rekap Kegiatan')
 
-    <section class="mt-11">
+@section('main')
+    <section>
         <form action="" method="get" class="grid items-center grid-cols-1 gap-3">
             <input type="date" value="{{ old('tanggal') }}" name="tanggal" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
             <div class="relative">

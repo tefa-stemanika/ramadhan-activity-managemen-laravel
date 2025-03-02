@@ -47,8 +47,8 @@
             @csrf
             @method('POST')
             <div class="space-y-3">
-                <input type="text" name="username" class="p-2.5 rounded-md text-sm font-medium placeholder:text-[#D9D9D9] placeholder:text-sm placeholder:font-medium bg-primary/10 border border-primary w-full" placeholder="Nomor Induk Siswa">
-                <input type="password" name="password" class="p-2.5 rounded-md text-sm font-medium placeholder:text-[#D9D9D9] placeholder:text-sm placeholder:font-medium bg-primary/10 border border-primary w-full" placeholder="Password">
+                <input type="text" name="username" autofocus autocomplete="off" class="p-2.5 rounded-md text-sm font-medium placeholder:text-[#D9D9D9] placeholder:text-sm placeholder:font-medium bg-primary/10 border border-primary w-full" placeholder="Nomor Induk Siswa">
+                <input type="password" name="password" autocomplete="off" class="p-2.5 rounded-md text-sm font-medium placeholder:text-[#D9D9D9] placeholder:text-sm placeholder:font-medium bg-primary/10 border border-primary w-full" placeholder="Password">
             </div>
             <div class="flex items-center justify-between mt-5">
                 <div class="flex items-center gap-x-1.5">
