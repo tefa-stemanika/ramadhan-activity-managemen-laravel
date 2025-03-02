@@ -26,8 +26,8 @@ class KegiatanController extends Controller
         ->when($tanggal, function ($query) use ($tanggal) {
             $query->whereDate('created_at', $tanggal);
         })
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
+        ->latest()
+        ->paginate(15);
 
     return view('pages.guru.data-siswa.kegiatan', compact('data', 'siswa', 'search', 'tanggal'));
 }

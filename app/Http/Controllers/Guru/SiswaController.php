@@ -10,18 +10,18 @@ use App\Models\Kelas;
 
 class SiswaController extends Controller
 {
-    public function index(Request $request, $kode_kelas) {
-        $search = $request->query('search'); 
+    public function index(Request $request, $kode_kelas)
+    {
+        $search = $request->query('search');
 
         $kelas = Kelas::where('kode', $kode_kelas)->first();
 
-        $data = Siswa::withCount('kegiatan') 
-            ->where('kode_kelas', $kode_kelas)
+        $data = $kelas->Siswa()->where('kode_kelas', $kode_kelas)
             ->when($search, function ($query) use ($search) {
                 $query->where('nis', 'like', "%{$search}%")
                     ->orWhere('nama', 'like', "%{$search}%");
             })
-            ->paginate(20); // Gunakan pagination untuk efisiensi
+            ->get();
 
         return view('pages.guru.data-siswa.home', compact('data', 'search', 'kode_kelas', 'kelas'));
     }

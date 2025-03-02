@@ -9,15 +9,18 @@ use App\Models\Kelas;
 
 class KelasController extends Controller
 {
-    public function index(Request $request) {
-        $search = $request->query('search');
+    public function index(Request $request)
+    {
+        $guru = Guru::where('username', auth()->user()->username)->first();
 
-        $data = Kelas::with(['guru', 'siswa'])
-            ->when($search, function ($query) use ($search) {
-                $query->where('nama', 'like', "%{$search}%");
-            })
-            ->get();
+        $data = $guru->Kelas()->when($request->search, function ($q) use ($request) {
+            $q->where('nama', 'like', "%{$request->search}%");
+        })->orderBy('nama')->get();
 
-        return view('pages.guru.kelas', compact('data', 'search'));
+        $request->flash();
+
+        return view('pages.guru.kelas', [
+            'data' => $data
+        ]);
     }
 }

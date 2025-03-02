@@ -32,7 +32,7 @@
                         <td class="bg-[#F5F5F5] px-4 py-2 text-black text-sm font-medium text-center">{{ $key + 1 }}</td>
                         <td class="bg-[#F5F5F5] px-4 py-2 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->nis }}</td>
                         <td class="bg-[#F5F5F5] px-4 py-2 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->nama }}</td>
-                        <td class="bg-[#F5F5F5] px-4 py-2 text-black text-sm font-medium border-l border-l-[#D9D9D9] text-center">{{ $item->kegiatan_count }}</td>
+                        <td class="bg-[#F5F5F5] px-4 py-2 text-black text-sm font-medium border-l border-l-[#D9D9D9] text-center">{{ $item->Kegiatan->count() }}</td>
                         <td class="bg-[#F5F5F5] px-4 py-2 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
                             <a href="{{ route('guru.data.kelas.siswa.kegiatan', $item->nis) }}" class="text-blue-500 text-sm font-semibold flex justify-center gap-x-3"><i data-feather="eye" class="feather-16 mt-1"></i>Lihat</a>
                         </td>
