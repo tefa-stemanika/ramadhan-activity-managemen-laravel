@@ -1,19 +1,10 @@
 @extends('components.layouts.guru.container')
 
+@section('title', 'Data Kelas')
+@section('nestedTitle', $kelas->nama)
+
 @section('main')
     <section>
-        <div class="flex space-x-2 md:space-x-8 mb-[40px]">
-                <a href="{{ route('guru.data.kelas') }}" class="flex items-center gap-4">
-                    <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                        <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
-                    </div>
-                    <p class="text-sm  font-bold text-mist">Data Kelas</p>
-                </a>
-            <a href="#" class="flex items-center gap-4">
-                <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="8" height="8" alt="" class="w-4">
-            </a>
-            <p class="text-sm  font-bold">{{ $kelas->nama }}</p>
-        </div>
             <form action="{{ route('guru.data.kelas.siswa', ['kode_kelas' => $kode_kelas]) }}" method="GET" class=" flex items-center gap-2.5 w-full md:w-auto mt-7">
                 <div class="relative w-full md:w-auto">
                     <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">

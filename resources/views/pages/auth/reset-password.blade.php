@@ -1,19 +1,10 @@
 @extends('components.layouts.guru.container')
 
+@section('title', 'Profil')
+@section('nestedTitle', 'Ganti Password')
+
 @section('main')
  <section>
-        <div class="flex space-x-2 mb-[60px]">
-                <a href="javascript:history.back()" class="flex items-center gap-4">
-                    <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                        <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
-                    </div>
-                    <p class="text-sm md:text-base font-bold text-mist">Profile</p>
-                </a>
-            <a href="#" class="flex items-center gap-4">
-                <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="8" height="8" alt="" class="w-4">
-            </a>
-            <p class="text-sm md:text-base font-bold">Ganti Password</p>
-        </div>
         <form action="{{ route('password.update') }}" method="POST" class="grid grid-cols-1 gap-y-6 mx-[20px]">
             @csrf
             <input type="text" name="username" id="username" value="{{ auth()->user()->username ?? '' }}" hidden autocomplete="username">

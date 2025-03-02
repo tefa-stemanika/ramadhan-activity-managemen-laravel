@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/svg+xml" href="{{ asset('icons/map_mosque.svg') }}">
     <script src="https://unpkg.com/feather-icons"></script>
-    <title>Guru</title>
+    <title>@yield('title') - Karomah</title>
     @notifyCss
     @env('production')
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,8 +33,20 @@
 </head>
 <body class="max-w-[720px] mx-auto bg-white pb-6">
     @include('components.layouts.guru.navbar')
+
+    @php
+        $title = app()->view->getSections()['title'];
+        $nestedTitle = app()->view->getSections()['nestedTitle'] ?? null;
+        $show = app()->view->getSections()['show'] ?? 'true';
+    @endphp
+
+    @include('components.shared.back-button', [
+        'title' => $title,
+        'nestedTitle' => $nestedTitle,
+        'show' => $show
+    ])
     
-    <main class="px-6 mt-32">
+    <main class="px-6">
         @yield('main')
     </main>
 
