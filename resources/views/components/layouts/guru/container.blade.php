@@ -46,7 +46,7 @@
         'show' => $show
     ])
     
-    <main class="px-6">
+    <main class="px-4">
         @yield('main')
     </main>
 
