@@ -4,10 +4,25 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Siswa;
+use App\Models\Guru;
+use App\Models\Kelas;
 
 class SiswaController extends Controller
 {
-    public function index() {
-        return view('pages.guru.data-siswa.home');
+    public function index(Request $request, $kode_kelas) {
+        $search = $request->query('search'); 
+
+        $kelas = Kelas::where('kode', $kode_kelas)->first();
+
+        $data = Siswa::withCount('kegiatan') 
+            ->where('kode_kelas', $kode_kelas)
+            ->when($search, function ($query) use ($search) {
+                $query->where('nis', 'like', "%{$search}%")
+                    ->orWhere('nama', 'like', "%{$search}%");
+            })
+            ->paginate(20); // Gunakan pagination untuk efisiensi
+
+        return view('pages.guru.data-siswa.home', compact('data', 'search', 'kode_kelas', 'kelas'));
     }
 }
