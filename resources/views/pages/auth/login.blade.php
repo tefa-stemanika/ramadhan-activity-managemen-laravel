@@ -55,7 +55,7 @@
                     <input type="checkbox" id="remember" name="remember" checked class="size-4 accent-primary">
                     <label for="remember" class="text-[#777C7A] text-xs font-medium">Ingat Saya?</label>
                 </div>
-                <a href="#" class="text-primary text-xs font-medium">Lupa password?</a>
+                <a href="https://wa.me/6285320050050" target="_blank" class="text-primary text-xs font-medium">Lupa password?</a>
             </div>
             <button class="w-full bg-primary px-2.5 py-2 text-white text-sm font-medium mt-7">Masuk</button>
         </form>
