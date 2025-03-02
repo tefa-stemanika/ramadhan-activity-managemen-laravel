@@ -13,6 +13,12 @@
             'icon' => 'icons/logo-users.svg'
         ],
         [
+            'display' => 'Data Guru',
+            'link' => '/admin/guru',
+            'route' => 'admin/guru*',
+            'icon' => 'icons/logo-guru.svg'
+        ],
+        [
             'display' => 'Data Kelas',
             'link' => '/admin/kelas',
             'route' => 'admin/kelas*',
@@ -23,12 +29,6 @@
             'link' => '/admin/siswa',
             'route' => 'admin/siswa*',
             'icon' => 'icons/logo-siswa.svg'
-        ],
-        [
-            'display' => 'Data Guru',
-            'link' => '/admin/guru',
-            'route' => 'admin/guru*',
-            'icon' => 'icons/logo-guru.svg'
         ],
         [
             'display' => 'Data Wali Kelas',
