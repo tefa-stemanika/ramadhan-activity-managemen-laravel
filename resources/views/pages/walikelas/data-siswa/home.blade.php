@@ -1,13 +1,9 @@
 @extends('components.layouts.walikelas.container')
 
+@section('title', 'Data Siswa')
+
 @section('main')
     <section>
-            <div class="flex gap-x-4 items-center mb-[40px]">
-                <a href="{{ route('walikelas.home') }}">
-                    <i data-feather="chevron-left" class="bg-primary rounded-[5px] text-white"></i>
-                </a>
-                <p class="text-lg text-gray-500 font-bold">Data Siswa</p>
-            </div>
             <form action="{{ route('walikelas.data.siswa') }}" method="GET" class="flex items-center gap-2.5 w-full sm:w-auto mt-7">
                 <div class="relative w-full sm:w-auto">
                     <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">

@@ -1,15 +1,8 @@
 @extends('components.layouts.walikelas.container')
 
-@section('main')
-    <section>
-        <a href="{{ route('walikelas.home') }}" class="flex items-center gap-4">
-            <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
-            </div>
-            <p class="text-sm font-bold">Jadwal Sholat</p>
-        </a>
-    </section>
+@section('title', 'Jadwal Sholat')
 
+@section('main')
     <section class="mt-11">
         <p class="text-sm font-medium">{{ now()->format('D, Y M d') }}</p>
         <div class="mt-5 overflow-x-scroll">
