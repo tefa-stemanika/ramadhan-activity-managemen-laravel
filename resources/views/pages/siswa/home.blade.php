@@ -1,5 +1,8 @@
 @extends('components.layouts.siswa.container')
 
+@section('title', 'Dashboard Siswa')
+@section('show', false)
+
 @section('main')
     @php
         $jenisKegiatan = [
@@ -71,7 +74,7 @@
         ];
     @endphp
 
-    <section>
+    <section class="mt-28">
         <h1 class="text-lg font-bold">Assalamu’alaikum, {{ auth()->user()->Siswa->nama }}</h1>
         <time class="text-sm font-medium mt-1.5">{{ now()->translatedFormat('l, d F Y') }}</time>
         <div class="flex items-center gap-x-4 mt-2.5">

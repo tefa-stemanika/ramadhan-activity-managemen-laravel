@@ -4,12 +4,12 @@
 @section('show', false)
 
 @section('main')
-    <section>
+    <section class="mt-28">
         <h1 class="text-lg font-bold">Assalamu`alaikum, {{ $guru->nama }}</h1>
         <time class="text-sm font-medium mt-1.5">{{ now()->format('D, Y M d') }}</time>
         <div class="flex items-center gap-x-4 mt-2.5">
             <a href="{{ route('guru.data.kelas') }}" class="flex items-center px-2.5 py-2  text-sm rounded bg-primary border border-primary text-white">Lihat Kelas</a>
-            <a href="{{ route('walikelas.jadwal-sholat') }}" class="flex items-center gap-4 px-2.5 py-2 rounded bg-transparent border border-primary text-primary">
+            <a href="{{ route('guru.jadwal-sholat') }}" class="flex items-center gap-4 px-2.5 py-2 rounded bg-transparent border border-primary text-primary">
                 <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
                 <p class="text-sm font-bold">Jadwal Sholat</p>
             </a>

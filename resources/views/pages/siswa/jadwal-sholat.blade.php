@@ -1,5 +1,7 @@
 @extends('components.layouts.siswa.container')
 
+@section('title', 'Jadwal Sholat')
+
 @section('main')
     <section class="mt-11">
         <p class="text-sm font-medium">{{ now()->translatedFormat('l, d F Y') }}</p>

@@ -26,4 +26,10 @@ class HomeController extends Controller
             ->get();
         return response()->json($data);
     }
+
+    public function profile() {
+        $walikelas = Walikelas::where('username', auth()->user()->username)->first();
+
+        return view('pages.walikelas.profile', compact('walikelas'));
+    }
 }
