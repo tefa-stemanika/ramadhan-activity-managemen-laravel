@@ -83,35 +83,51 @@
                 <tbody>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Imsak</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->imsak)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->imsak) ? Carbon\Carbon::parse($jadwal_sholat->imsak)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Subuh</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->subuh)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->subuh) ? Carbon\Carbon::parse($jadwal_sholat->subuh)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Terbit</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->terbit)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->terbit) ? Carbon\Carbon::parse($jadwal_sholat->terbit)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Dhuha</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->dhuha)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->dhuha) ? Carbon\Carbon::parse($jadwal_sholat->dhuha)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Duhur</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->duhur)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->dzuhur) ? Carbon\Carbon::parse($jadwal_sholat->dzuhur)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Ashar</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->ashar)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->ashar) ? Carbon\Carbon::parse($jadwal_sholat->ashar)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Magrib</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->maghrib)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->maghrib) ? Carbon\Carbon::parse($jadwal_sholat->maghrib)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="bg-primary px-6 py-2.5 text-white text-sm font-bold text-center border-b border-b-white border border-primary">Isya</th>
-                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">{{ Carbon\Carbon::parse($jadwal_sholat->isya)->format('H:i') }}</td>
+                        <td class="bg-white px-6 py-2.5 text-black text-sm font-bold text-center border border-primary">
+                            {{ !empty($jadwal_sholat->isya) ? Carbon\Carbon::parse($jadwal_sholat->isya)->format('H:i') : '-' }}
+                        </td>
                     </tr>
                 </tbody>
             </table>

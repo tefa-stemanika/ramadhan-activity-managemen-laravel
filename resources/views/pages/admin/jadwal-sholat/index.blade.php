@@ -49,22 +49,40 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $jadwal)                   
+                @foreach ($data as $jadwal_sholat)                   
                 <tr>
                     <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium text-center">{{ $loop->iteration }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->tanggal)->format('d-m-Y') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->imsak)->format('H:i') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->subuh)->format('H:i') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->terbit)->format('H:i') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->dhuha)->format('H:i') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->dzuhur)->format('H:i') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->ashar)->format('H:i') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->maghrib)->format('H:i') }}</td>
-                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ \Carbon\Carbon::parse($jadwal->isya)->format('H:i') }}</td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->tanggal) ? Carbon\Carbon::parse($jadwal_sholat->tanggal)->format('d-m-Y') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->imsak) ? Carbon\Carbon::parse($jadwal_sholat->imsak)->format('H:i') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->subuh) ? Carbon\Carbon::parse($jadwal_sholat->subuh)->format('H:i') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->terbit) ? Carbon\Carbon::parse($jadwal_sholat->terbit)->format('H:i') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->dhuha) ? Carbon\Carbon::parse($jadwal_sholat->dhuha)->format('H:i') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->dzuhur) ? Carbon\Carbon::parse($jadwal_sholat->dzuhur)->format('H:i') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->ashar) ? Carbon\Carbon::parse($jadwal_sholat->ashar)->format('H:i') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->maghrib) ? Carbon\Carbon::parse($jadwal_sholat->maghrib)->format('H:i') : '-' }}
+                    </td>
+                    <td class="bg-[#F5F5F5] px-4 py-2 md:px-6 md:py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">
+                        {{ !empty($jadwal_sholat->isya) ? Carbon\Carbon::parse($jadwal_sholat->isya)->format('H:i') : '-' }}
+                    </td>
                     <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
-                        <a href="{{ route('jadwal-sholat.edit', $jadwal) }}" class="text-[#0062FF] text-sm font-medium">Edit</a>
+                        <a href="{{ route('jadwal-sholat.edit', $jadwal_sholat) }}" class="text-[#0062FF] text-sm font-medium">Edit</a>
                         <p>|</p>
-                        <form action="{{ route('jadwal-sholat.destroy', $jadwal) }}" method="POST">
+                        <form action="{{ route('jadwal-sholat.destroy', $jadwal_sholat) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button onclick="return confirm('Apakah Anda yakin ingin menghapus jadwal sholat ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
