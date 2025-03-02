@@ -33,7 +33,19 @@
 <body class="max-w-[720px] mx-auto bg-white pb-6">
     @include('components.layouts.siswa.navbar')
     
-    <main class="px-6 mt-28">
+    @php
+        $title = app()->view->getSections()['title'];
+        $nestedTitle = app()->view->getSections()['nestedTitle'] ?? null;
+        $show = app()->view->getSections()['show'] ?? 'true';
+    @endphp
+
+    @include('components.shared.back-button', [
+        'title' => $title,
+        'nestedTitle' => $nestedTitle,
+        'show' => $show
+    ])
+    
+    <main class="px-4 mt-28">
         @yield('main')
     </main>
 

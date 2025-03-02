@@ -6,7 +6,7 @@
     <section>
         <form action="{{ route('guru.data.kelas') }}" method="GET" class="flex items-center gap-2.5 w-full sm:w-auto">
             <div class="relative w-full sm:w-auto">
-                <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
                 <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari kelas..." class="bg-white w-full sm:w-auto rounded-full pl-9 pr-2.5 py-1 border border-primary">
             </div>
             <button class="bg-primary rounded-full px-4 py-2 text-white text-xs font-semibold">Cari</button>

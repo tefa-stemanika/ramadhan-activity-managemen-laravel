@@ -1,23 +1,6 @@
 @extends('components.layouts.siswa.container')
 
 @section('main')
-    <section class="mb-10">
-        <div class="flex gap-x-4 items-center">
-            <div class="flex gap-x-7 items-center">
-                <a href="{{ url()->previous() }}" class="flex items-center justify-center bg-primary size-7 rounded-lg">
-                    <img src="{{ asset('icons/chevron-left.svg') }}" alt="Prev Button" class="size-2.5">
-                </a>
-                <h2 class="text-black text-base font-bold">Jadwal Sholat</h2>
-            </div>
-            {{-- @if (!empty($nestedTitle))
-                <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="16" height="16" alt="Right Arrow Icon">
-                <div class="flex gap-x-7 items-center">
-                    <h2 class="text-black text-base lg:text-xl font-bold">{{ $nestedTitle }}</h2>
-                </div>
-            @endif --}}
-        </div>
-    </section>
-
     <section class="mt-11">
         <p class="text-sm font-medium">{{ now()->translatedFormat('l, d F Y') }}</p>
         <div class="mt-5 overflow-x-scroll">
