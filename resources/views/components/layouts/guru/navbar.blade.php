@@ -3,12 +3,12 @@
         [
             'display' => 'Home',
             'link' => '/guru',
-            'route' => 'guru.home'
+            'route' => 'guru'
         ],
         [
             'display' => 'Rekap Kegiatan Kelas',
             'link' => '/guru/kelas',
-            'route' => 'guru.data.kelas'
+            'route' => 'guru/kelas*'
         ]
     ];
 @endphp

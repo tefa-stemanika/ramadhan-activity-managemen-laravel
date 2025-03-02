@@ -1,16 +1,11 @@
 @extends('components.layouts.guru.container')
 
+@section('title', $siswa->Kelas->nama)
+@section('nestedTitle', $siswa->nama)
+
 @section('main')
     <section>
-        <div class="mb-[40px]">
-            <div class="flex gap-x-4 items-center">
-                <a href="{{ route('guru.data.kelas.siswa', $siswa->kode_kelas) }}"><i data-feather="chevron-left" class="bg-primary rounded-[5px] text-white"></i></a>
-                <p class="text-sm text-gray-500 font-bold">XII RPL 1</p>
-                <i data-feather="chevron-right" class="text-gray-500"></i>
-                <p class="text-sm font-bold">{{ $siswa->nama }}</p>
-            </div>
-        </div>
-        <div class="grid gap-y-4    ">
+        <div class="grid gap-y-4">
             <form action="{{ route('guru.data.kelas.siswa.kegiatan', $siswa->nis) }}" method="get">
                 @csrf
                 <input type="date" name="tanggal" value="{{ request('tanggal') }}" placeholder="Pilih Tanggal" onchange="this.form.submit()" class="p-2 bg-gray-200 rounded-full text-primary font-semibold">

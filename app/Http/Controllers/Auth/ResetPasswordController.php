@@ -11,21 +11,21 @@ use App\Models\User;
 
 class ResetPasswordController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('pages.auth.reset-password');
     }
 
     public function reset(Request $request)
     {
-
         $validated = $request->validate([
-        'password' => 'required|confirmed',
+            'password' => 'required|confirmed',
         ], [
             'password.required' => 'Password baru wajib diisi.',
-            'password.confirmed' => 'Konfirmasi password tidak cocok.', 
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ]);
 
-        $user = auth()->user();
+        $user = User::find(auth()->user()->id);
         $user->password = Hash::make($request->password);
         $user->save();
 

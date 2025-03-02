@@ -1,5 +1,8 @@
 @extends('components.layouts.guru.container')
 
+@section('title', 'Dashboard Guru')
+@section('show', false)
+
 @section('main')
     <section>
         <h1 class="text-lg font-bold">Assalamu`alaikum, {{ $guru->nama }}</h1>
