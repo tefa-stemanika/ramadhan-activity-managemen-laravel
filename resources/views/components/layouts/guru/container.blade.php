@@ -38,7 +38,7 @@
         @yield('main')
     </main>
 
-    @include('components.shared.notifications.toast')
+    @include('notify::components.notify')
   @notifyJs
   @env('production')
       <script src="{{ asset('build/assets/main.js') }}"></script>
