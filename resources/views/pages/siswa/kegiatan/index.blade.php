@@ -62,7 +62,7 @@
     </section>
 
     <div id="photoOverlay" class="hidden fixed z-50 top-0 left-0 w-full h-screen bg-black bg-opacity-70">
-        <div class="flex items-center justify-center relative h-full">
+        <div class="flex items-center justify-center relative h-full w-full">
             <img id="popupImage" class="max-w-[80%] max-h-[80%] rounded-lg shadow-2xl" src="" alt="Foto Kegiatan">
             <button class="absolute flex items-center justify-center top-2 right-2 bg-white text-black p-2 aspect-square rounded-full shadow-md" onclick="closePhotoPopup()">✖</button>
         </div>

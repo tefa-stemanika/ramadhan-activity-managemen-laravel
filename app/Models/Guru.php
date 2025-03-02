@@ -27,8 +27,8 @@ class Guru extends Model
         return $this->belongsTo(User::class, 'username', 'username');
     }
 
-    public function Guru()
+    public function Kelas()
     {
-        return $this->hasMany(Guru::class, 'kode_guru', 'kode');
+        return $this->hasMany(Kelas::class, 'kode_guru', 'kode');
     }
 }
