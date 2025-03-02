@@ -11,21 +11,21 @@
             </div>
         </div>
         <div class="grid gap-y-4    ">
-            <form action="{{ route('siswa.show', $data->nis) }}" method="get">
+            <form action="{{ route('walikelas.data.siswa.kegiatan', $data->nis) }}" method="get">
                 @csrf
                 <input type="date" name="tanggal" value="{{ request('tanggal') }}" placeholder="Pilih Tanggal" onchange="this.form.submit()" class="p-2 bg-gray-200 rounded-full text-primary font-semibold">
             </form>
-            <form action="{{ route('siswa.index') }}" method="GET" class="flex items-center gap-2.5">
+            <form action="{{ route('walikelas.data.siswa.kegiatan', $data->nis) }}" method="GET" class="flex items-center gap-2.5">
                 @csrf
                 <div class="relative">
                     <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
                     <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari kegiatan..." class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
                 </div>
-                <button class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
+                <button class="bg-primary rounded-full px-3 py-2.5 text-white text-xs font-semibold">
                     Cari
                 </button>
                 @if(request('search'))
-                    <a href="{{ route('siswa.index') }}" class="bg-gray-500 text-white rounded-full px-5 py-2.5 text-xs font-semibold">
+                    <a href="{{ route('walikelas.data.siswa.kegiatan', $data->nis) }}" class="bg-gray-500 text-white rounded-full px-3 py-2.5 text-xs font-semibold">
                         Reset
                     </a>
                 @endif
