@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Siswa;
 
 use App\Http\Controllers\Controller;
+use App\Models\JadwalSholat;
 use Illuminate\Http\Request;
 
 class JadwalSholatController extends Controller
@@ -12,7 +13,9 @@ class JadwalSholatController extends Controller
      */
     public function index()
     {
-        return view('pages.siswa.jadwa-sholat');
+        return view('pages.siswa.jadwal-sholat', [
+            'data' => JadwalSholat::whereDate('tanggal', now())->first()
+        ]);
     }
 
     /**

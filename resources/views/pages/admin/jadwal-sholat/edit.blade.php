@@ -1,20 +1,10 @@
 @extends('components.layouts.admin.container')
-@section('title', 'Jadwal Sholat')
+
+@section('title', "Data Jadwal Sholat")
+@section('nestedTitle', "Edit")
 
 @section('main')
     <section>
-        <div class="flex space-x-2 md:space-x-8 mb-6 md:mb-12">
-                <a href="{{ route('jadwal-sholat.index') }}" class="flex items-center gap-4">
-                    <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                        <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
-                    </div>
-                    <p class="text-base font-bold text-mist">Jadwal Sholat</p>
-                </a>
-            <a href="{{ route('jadwal-sholat.index') }}" class="flex items-center gap-4">
-                <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="8" height="8" alt="" class="w-4">
-            </a>
-            <p class="text-base font-bold">Edit Jadwal Sholat</p>
-        </div>
         <form action="{{ route('jadwal-sholat.update', $jadwal_sholat->id) }}" method="POST" class="bg-white p-4 md:p-15 space-y-6 rounded-md border-[1.5px] border-[#D9D9D9] max-w-[750px]">
             @csrf
             @method('PUT')

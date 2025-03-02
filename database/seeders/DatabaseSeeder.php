@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call(UserSeeder::class);
+        $this->call(GuruSeeder::class);
         $this->call(KelasSeeder::class);
         $this->call(SiswaSeeder::class);
         $this->call(WalikelasSeeder::class);
-        $this->call(GuruSeeder::class);
         $this->call(KegiatanSeeder::class);
 
         // \App\Models\User::factory()->create([

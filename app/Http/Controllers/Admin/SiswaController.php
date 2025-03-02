@@ -26,7 +26,7 @@ class SiswaController extends Controller
                 ->orWhere('nama', 'like', "%$search%");
         }
 
-        $data = $query->paginate(20);
+        $data = $query->paginate(15);
 
         return view('pages.admin.siswa.index', compact('data'));
     }

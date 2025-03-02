@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\JadwalSholat;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +14,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.home');
+        $jadwal_sholat = JadwalSholat::whereDate('tanggal', now())->first();
+        $kegiatan = Kegiatan::latest()->limit(12)->get();
+
+        return view('pages.admin.home', [
+            'jadwal_sholat' => $jadwal_sholat,
+            'kegiatan' => $kegiatan,
+        ]);
     }
 
     /**

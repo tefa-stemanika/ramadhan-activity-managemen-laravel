@@ -1,32 +1,27 @@
 @extends('components.layouts.admin.container')
-@section('title', 'Data Walikelas')
+
+@section('title', "Data Wali Kelas")
 
 @section('main')
     <section>
-         <div class="mb-6 md:mb-12">
-            <div class="flex gap-x-4 items-center">
-                <a href="{{ url()->previous() }}"><i data-feather="chevron-left" class="bg-primary rounded-[5px]  text-white"></i></a>
-                <p class="text-sm md:text-base font-bold">Data Walikelas</p>
-            </div>
-        </div>
         <div class="flex flex-col space-y-6 md:space-y-0 md:items-center md:justify-between md:flex-row">
-            <form action="{{ route('walikelas.index') }}" method="GET" class="flex items-center gap-2.5 w-full md:w-auto">
+            <form class="flex items-center gap-2.5 w-full md:w-auto">
                 <div class="relative w-full md:w-auto">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
-                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari Walikelas..." class="w-full md:w-auto bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
+                    <img src="{{ asset('icons/search-icon.svg') }}" width="18" height="18" alt="" class="absolute top-1/2 -translate-y-1/2 left-2.5">
+                    <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari Wali Kelas..." class="w-full md:w-auto bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary">
                 </div>
-                <button class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
+                <button type="submit" class="bg-primary rounded-full px-5 py-2.5 text-white text-xs font-semibold">
                     Cari
                 </button>
                 @if(request('search'))
-                <a href="{{ route('walikelas.index') }}" class="bg-gray-500 text-white rounded-full px-5 py-2.5 text-xs font-semibold">
-                    Reset
-                </a>
+                    <a href="{{ route('user.index') }}" class="bg-gray-500 text-white rounded-full px-5 py-2.5 text-xs font-semibold">
+                        Reset
+                    </a>
                 @endif
             </form>
             <div class="flex items-center gap-2.5">
                 <a href="walikelas/create" class="flex items-center gap-4  px-5 py-2 rounded bg-transparent border border-primary text-primary">
-                    <img src="{{ asset('icons/map_mosque.svg') }}" alt="mosque icon" width="20" height="20">
+                    <img src="{{ asset('icons/plus.svg') }}" alt="mosque icon" width="20" height="20">
                     <p class="text-sm font-bold">Tambah Data</p>
                 </a>
                 @include('components.shared.modals.import', [
@@ -61,15 +56,15 @@
                             <form action="{{ route('walikelas.destroy', $item) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button onclick="return confirm('Apakah Anda yakin ingin menghapus walikelas ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
+                                <button onclick="return confirm('Apakah Anda yakin ingin menghapus wali kelas ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
                             </form>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-                {{ $data->appends(request()->query())->links() }}
             </table>
         </div>
+        {{ $data->appends(request()->query())->links() }}
     </section>
 @endsection
 

@@ -23,9 +23,9 @@ class KegiatanController extends Controller
                     ->whereDate('created_at', $request->tanggal);
             })
             ->latest()
-            ->get();
+            ->paginate(20);
 
-            $request->flash();
+        $request->flash();
 
         return view('pages.siswa.kegiatan.index', [
             'kegiatan' => $kegiatan

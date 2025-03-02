@@ -15,10 +15,10 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure, SkipsEmptyRows
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     use Importable, SkipsErrors, SkipsFailures;
 
     public function model(array $row)
@@ -26,25 +26,28 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
         return new Siswa([
             'nis' => $row['nis'],
             'nama' => $row['nama'],
-            'username' => $row['username'] ,
+            'username' => $row['username'],
             'kode_kelas' => $row['kode_kelas'],
         ]);
     }
 
-    public function headingRow(): int {
+    public function headingRow(): int
+    {
         return 1;
     }
 
-    public function rules(): array {
+    public function rules(): array
+    {
         return [
             '*.nis' => ['required', 'integer', 'digits_between:1,10', 'unique:siswa,nis'],
             '*.nama' => ['required', 'string', 'max:255'],
-            '*.username' => ['required', 'string', 'exists:users,username'],
+            '*.username' => ['required', 'exists:users,username', 'unique:siswa,username'],
             '*.kode_kelas' => ['required', 'string', 'exists:kelas,kode']
         ];
     }
 
-    public function customValidationMessage() {
+    public function customValidationMessage()
+    {
         return [
             '*.nis.required' => 'NIS harus diisi!',
             '*.nis.integer' => 'NIS harus berupa angka!',
@@ -55,6 +58,7 @@ class SiswaImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
             '*.nama.max' => 'Nama maksimal 255 karakter!',
             '*.username.exists' => 'Username tidak ditemukan di tabel users!',
             '*.username.required' => 'Username wajib diisi!',
+            '*.username.unique' => 'Username sudah terdaftar!',
             '*.kode_kelas.exists' => 'Kode kelas tidak ditemukan di tabel kelas!',
             '*.kode_kelas.required' => 'Kode kelas wajib diisi!'
         ];

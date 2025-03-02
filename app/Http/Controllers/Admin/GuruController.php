@@ -18,13 +18,13 @@ class GuruController extends Controller
     {
         $query = Guru::query();
 
-        if ($request->has('q')) {
-            $query->where('kode', 'like', "%{$request->q}%")
-                ->orWhere('nama', 'like', "%{$request->q}%")
-                ->orWhere('username', 'like', "%{$request}%");
+        if ($request->has('search')) {
+            $query->where('kode', 'like', "%$request->search%")
+                ->orWhere('nama', 'like', "%$request->search%")
+                ->orWhere('username', 'like', "%$request->search%");
         }
 
-        $guru = $query->paginate(20);
+        $guru = $query->paginate(15);
 
         return view('pages.admin.guru.index', compact('guru'));
     }
@@ -56,9 +56,11 @@ class GuruController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Guru $guru)
     {
-        //
+        return view('pages.admin.guru.detail', [
+            'data' => $guru
+        ]);
     }
 
     /**

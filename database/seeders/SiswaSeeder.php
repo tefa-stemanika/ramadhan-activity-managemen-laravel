@@ -14,14 +14,12 @@ class SiswaSeeder extends Seeder
     {
         $data = [
             [
-                'id' => '1',
                 'nis' => '123',
                 'nama' => 'siswa1',
                 'username' => '123',
                 'kode_kelas' => 'kelas1'
             ],
             [
-                'id' => '2',
                 'nis' => '345',
                 'nama' => 'siswa2',
                 'username' => '456',

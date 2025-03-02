@@ -23,7 +23,7 @@ class WalikelasController extends Controller
             $query->where('nama', 'like', "%$search%");
         }
 
-        $data = $query->paginate(20);
+        $data = $query->paginate(15);
 
         return view('pages.admin.walikelas.index', compact('data'));
     }
@@ -59,17 +59,17 @@ class WalikelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Walikelas $walas)
+    public function edit(Walikelas $walikelas)
     {
-        return view('pages.admin.walikelas.edit', compact('walas'));
+        return view('pages.admin.walikelas.edit', compact('walikelas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(WalikelasUpdateRequest $request, Walikelas $walas)
+    public function update(WalikelasUpdateRequest $request, Walikelas $walikelas)
     {
-        $walas->update($request->validated());
+        $walikelas->update($request->validated());
 
         notify()->success('Data walikelas berhasil diperbarui');
 
@@ -79,9 +79,9 @@ class WalikelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Walikelas $walas)
+    public function destroy(Walikelas $walikelas)
     {
-        $walas->delete();
+        $walikelas->delete();
 
         notify()->success('Walikelas berhasil dihapus');
 

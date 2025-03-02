@@ -1,20 +1,10 @@
 @extends('components.layouts.admin.container')
-@section('title', 'Data Walikelas')
+
+@section('title', "Data Wali Kelas")
+@section('nestedTitle', "Create")
 
 @section('main')
     <section>
-        <div class="flex space-x-2 md:space-x-8 mb-6 mb:12">
-                <a href="{{ route('walikelas.index') }}" class="flex items-center gap-4">
-                    <div class="flex items-center justify-center bg-primary aspect-square rounded-md size-6">
-                        <img src="{{ asset('icons/chevron-left.svg') }}" width="8" height="8" alt="">
-                    </div>
-                    <p class="text-sm md:text-base font-bold text-mist">Data Walikelas</p>
-                </a>
-            <a href="{{ route('walikelas.index') }}" class="flex items-center gap-4">
-                <img src="{{ asset('icons/ep_arrow-right-bold.svg') }}" width="8" height="8" alt="" class="w-4">
-            </a>
-            <p class="text-sm md:text-base font-bold">Tambah Walikelas</p>
-        </div>
         <form action="{{ route('walikelas.store') }}" method="post" class="bg-white p-4  md:p-15 space-y-6 rounded-md border-[1.5px] border-[#D9D9D9] max-w-[750px]">
             @csrf
             @method('POST')
