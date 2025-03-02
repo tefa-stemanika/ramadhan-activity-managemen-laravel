@@ -3,22 +3,22 @@
         [
             'display' => 'Home',
             'link' => '/walikelas',
-            'route' => 'walikelas.home'
+            'route' => 'walikelas'
         ],
         [
             'display' => 'Profile',
             'link' => '/walikelas/profile',
-            'route' => 'walikelas.profile'
+            'route' => 'walikelas/profile*'
         ],
         [
             'display' => 'Jadwal Sholat',
             'link' => '/walikelas/jadwal-sholat',
-            'route' => 'walikelas.jadwal-sholat'
+            'route' => 'walikelas/jadwal-sholat*'
         ],
         [
             'display' => 'Rekap Kegiatan Siswa',
             'link' => '/walikelas/siswa',
-            'route' => 'walikelas.data.siswa'
+            'route' => 'walikelas/siswa*'
         ]
     ];
 @endphp
