@@ -1,4 +1,4 @@
-@extends('components.layouts.walikelas.container')
+@extends('components.layouts.guru.container')
 
 @section('title', 'Jadwal Sholat')
 

@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/kelas', [App\Http\Controllers\Guru\KelasController::class, 'index'])->name('guru.data.kelas');
         Route::get('/kelas/{kode_kelas}/siswa', [App\Http\Controllers\Guru\SiswaController::class, 'index'])->name('guru.data.kelas.siswa');
         Route::get('/kelas/siswa/{nis}/kegiatan', [App\Http\Controllers\Guru\KegiatanController::class, 'index'])->name('guru.data.kelas.siswa.kegiatan');
+        Route::get('/jadwal-sholat', [App\Http\Controllers\Guru\JadwalSholatController::class, 'index'])->name('guru.jadwal-sholat');
         Route::get('/chart-data', [App\Http\Controllers\Guru\HomeController::class, 'chartData'])->name('chart.data.kelas');
     });
 
