@@ -23,7 +23,7 @@ class WalikelasUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kode' => ['required', 'string', 'max:255', Rule::unique('walikelas', 'kode')->ignore($this->kode, 'kode')],
+            'kode' => ['required', 'string', 'max:255', Rule::unique('walikelas', 'kode')->ignore($this->walikelas)],
             'nama' => ['required', 'string', 'max:255'],
             'kode_kelas' => ['required', 'string', 'exists:kelas,kode', Rule::unique('walikelas', 'kode_kelas')->ignore($this->walikelas)],
             'username' => ['required', 'string', 'exists:users,username', Rule::unique('walikelas', 'username')->ignore($this->walikelas)],

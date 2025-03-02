@@ -56,9 +56,11 @@ class GuruController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Guru $guru)
     {
-        //
+        return view('pages.admin.guru.detail', [
+            'data' => $guru
+        ]);
     }
 
     /**

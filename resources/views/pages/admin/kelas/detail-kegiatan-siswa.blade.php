@@ -35,7 +35,7 @@
                 <tbody>
                     @foreach ($data->Kegiatan()->latest()->get() as $key => $item)
                         <tr>
-                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium">{{ $key + 1 }}</td>
+                            <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium text-center">{{ $key + 1 }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->jenis_kegiatan }}</td>
                             <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $item->deskripsi ?? '-' }}</td>
@@ -51,8 +51,25 @@
             </table>
         </div>
     </section>
+
+    <div id="photoOverlay" class="hidden fixed z-50 top-0 left-0 w-full h-screen bg-black bg-opacity-70">
+        <div class="flex items-center justify-center relative h-full w-full">
+            <img id="popupImage" class="max-w-[80%] max-h-[80%] rounded-lg shadow-2xl" src="" alt="Foto Kegiatan">
+            <button class="absolute flex items-center justify-center top-2 right-2 bg-white text-black p-2 aspect-square rounded-full shadow-md" onclick="closePhotoPopup()">✖</button>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
     <script src="{{ asset('js/import-modal.js') }}"></script>
+    <script>
+        function showPhotoPopup(photoUrl) {
+            document.getElementById("popupImage").src = photoUrl;
+            document.getElementById("photoOverlay").classList.replace("hidden", "flex");
+        }
+        
+        function closePhotoPopup() {
+            document.getElementById("photoOverlay").classList.replace("flex", "hidden");
+        }
+    </script>
 @endsection

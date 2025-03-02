@@ -50,6 +50,8 @@
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $g->nama }}</td>
                         <td class="bg-[#F5F5F5] px-6 py-2.5 text-black text-sm font-medium border-l border-l-[#D9D9D9]">{{ $g->username }}</td>
                         <td class="flex items-center justify-center gap-4 bg-[#F5F5F5] px-6 py-2.5 text-sm font-medium border-l border-l-[#D9D9D9]">
+                            <a href="{{ route('guru.show', $g) }}" class="text-primary text-sm font-medium">Detail</a>
+                            <p>|</p>
                             <a href="{{ route('guru.edit', $g) }}" class="text-[#0062FF] text-sm font-medium">Edit</a>
                             <p>|</p>
                             <form action="{{ route('guru.destroy', $g) }}" method="POST">

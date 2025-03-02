@@ -67,9 +67,9 @@ class WalikelasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(WalikelasUpdateRequest $request, Walikelas $walas)
+    public function update(WalikelasUpdateRequest $request, Walikelas $walikelas)
     {
-        $walas->update($request->validated());
+        $walikelas->update($request->validated());
 
         notify()->success('Data walikelas berhasil diperbarui');
 
