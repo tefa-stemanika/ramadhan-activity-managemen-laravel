@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Siswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Siswa;
 
 class HomeController extends Controller
 {
@@ -12,6 +13,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('pages.siswa.home');
+    }
+
+    public function profile() {
+        $siswa = Siswa::where('username', auth()->user()->username)->first();
+        return view('pages.siswa.profile', compact('siswa'));
     }
 
     /**

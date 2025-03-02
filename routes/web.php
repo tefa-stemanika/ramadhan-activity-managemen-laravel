@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('siswa')->middleware(['role:siswa', 'not.null:siswa'])->group(function () {
         Route::get('/', [App\Http\Controllers\Siswa\HomeController::class, 'index'])->name('siswa.home');
+        Route::get('/profile', [App\Http\Controllers\Siswa\HomeController::class, 'profile'])->name('siswa.profile');
         Route::get('/jadwal-sholat', [App\Http\Controllers\Siswa\JadwalSholatController::class, 'index'])->name('siswa.jadwal-sholat');
         Route::get('/kegiatan/create', [App\Http\Controllers\Siswa\KegiatanController::class, 'create'])->name('siswa.kegiatan.create');
         Route::post('/kegiatan/store', [App\Http\Controllers\Siswa\KegiatanController::class, 'store'])->name('siswa.kegiatan.store');
