@@ -57,7 +57,7 @@
                                 <form action="{{ route('kelas.destroy', $item) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
+                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus kelas ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
                                 </form>
                             </td>
                         </tr>

@@ -68,11 +68,19 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/{kelas}', [App\Http\Controllers\Admin\KelasController::class, 'destroy'])->name('kelas.destroy');
         });
 
+        Route::prefix('walikelas')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\WalikelasController::class, 'index'])->name('walikelas.index');
+            Route::get('/create', [App\Http\Controllers\Admin\WalikelasController::class, 'create'])->name('walikelas.create');
+            Route::get('/{walikelas}/edit', [App\Http\Controllers\Admin\WalikelasController::class, 'edit'])->name('walikelas.edit');
+            Route::post('/store', [App\Http\Controllers\Admin\WalikelasController::class, 'store'])->name('walikelas.store');
+            Route::put('/{walikelas}', [App\Http\Controllers\Admin\WalikelasController::class, 'update'])->name('walikelas.update');
+            Route::delete('/{walikelas}', [App\Http\Controllers\Admin\WalikelasController::class, 'destroy'])->name('walikelas.destroy');
+        });
+
         Route::resources([
             'user' => App\Http\Controllers\Admin\UserController::class,
             'guru' => App\Http\Controllers\Admin\GuruController::class,
             'siswa' => App\Http\Controllers\Admin\SiswaController::class,
-            'walikelas' => App\Http\Controllers\Admin\WalikelasController::class,
             'jadwal-sholat' => \App\Http\Controllers\Admin\JadwalSholatController::class,
         ]);
 

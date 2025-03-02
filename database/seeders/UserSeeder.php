@@ -15,25 +15,21 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'id' => '1',
                 'username' => '123',
                 'password' => Hash::make(123),
                 'role' => 'siswa'
             ],
             [
-                'id' => '2',
                 'username' => '456',
                 'password' => Hash::make(123),
                 'role' => 'siswa'
             ],
             [
-                'id' => '3',
                 'username' => 'admin',
                 'password' => Hash::make(123),
                 'role' => 'admin'
             ],
             [
-                'id' => '4',
                 'username' => 'guru1',
                 'password' => Hash::make(123),
                 'role' => 'guru'

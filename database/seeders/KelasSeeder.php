@@ -14,7 +14,6 @@ class KelasSeeder extends Seeder
     {
         $data = [
             [
-                'id' => '1',
                 'kode' => 'kelas1',
                 'nama' => 'kelas1',
                 'kode_guru' => 'guru1'
