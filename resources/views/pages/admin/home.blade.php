@@ -142,7 +142,7 @@
                     @foreach ($jenisKegiatan as $j)
                         @if ($j['jenis'] == $item->jenis_kegiatan)
                             <div class="flex items-center justify-center p-2.5 {{ $j['class'] }} rounded-l-lg">
-                                <p class="text-xs font-medium text-center">{{ $item->jenis_kegiatan }}</p>
+                                <p class="text-xs font-medium text-center">{{ $j['text'] }}</p>
                             </div>
                         @endif
                     @endforeach
