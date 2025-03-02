@@ -11,6 +11,11 @@
             'route' => 'admin/user*',
         ],
         [
+            'display' => 'Data Guru',
+            'link' => '/admin/guru',
+            'route' => 'admin/guru*',
+        ],
+        [
             'display' => 'Data Kelas',
             'link' => '/admin/kelas',
             'route' => 'admin/kelas*',
@@ -19,11 +24,6 @@
             'display' => 'Data Siswa',
             'link' => '/admin/siswa',
             'route' => 'admin/siswa*',
-        ],
-        [
-            'display' => 'Data Guru',
-            'link' => '/admin/guru',
-            'route' => 'admin/guru*',
         ],
         [
             'display' => 'Data Wali Kelas',

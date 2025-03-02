@@ -1,3 +1,9 @@
+@php
+    $title = app()->view->getSections()['title'];
+    $nestedTitle = app()->view->getSections()['nestedTitle'] ?? null;
+    $show = app()->view->getSections()['show'] ?? 'true';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/svg+xml" href="{{ asset('icons/map_mosque.svg') }}">
     <script src="https://unpkg.com/feather-icons"></script>
-    <title>@yield('title') - Karomah</title>
+    <title>{{ $title }} - Karomah</title>
     @notifyCss
     @env('production')
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,12 +39,6 @@
 </head>
 <body class="max-w-[720px] mx-auto bg-white pb-6">
     @include('components.layouts.guru.navbar')
-
-    @php
-        $title = app()->view->getSections()['title'];
-        $nestedTitle = app()->view->getSections()['nestedTitle'] ?? null;
-        $show = app()->view->getSections()['show'] ?? 'true';
-    @endphp
 
     @include('components.shared.back-button', [
         'title' => $title,

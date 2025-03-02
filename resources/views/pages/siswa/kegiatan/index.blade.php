@@ -3,7 +3,7 @@
 @section('title', 'Rekap Kegiatan')
 
 @section('main')
-    <section class="mt-11">
+    <section>
         <form action="" method="get" class="grid items-center grid-cols-1 gap-3">
             <input type="date" value="{{ old('tanggal') }}" name="tanggal" class="bg-white rounded-full pl-9 pr-2.5 py-1 border border-primary w-full">
             <div class="relative">

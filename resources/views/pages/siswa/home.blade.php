@@ -1,7 +1,7 @@
 @extends('components.layouts.siswa.container')
 
 @section('title', 'Dashboard Siswa')
-@section('show', false)
+@section('show', 'false')
 
 @section('main')
     @php

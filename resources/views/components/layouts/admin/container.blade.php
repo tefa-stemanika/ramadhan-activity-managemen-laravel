@@ -1,3 +1,8 @@
+@php
+    $title = app()->view->getSections()['title'];
+    $nestedTitle = app()->view->getSections()['nestedTitle'] ?? null;
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/svg+xml" href="{{ asset('icons/map_mosque.svg') }}">
-    <title>@yield('title') - Karomah</title>
+    <title>{{ $title }} - Karomah</title>
     <script src="https://unpkg.com/feather-icons"></script>
     @notifyCss
     @env('production')
@@ -37,11 +42,6 @@
     </div>
 
     @include('components.layouts.admin.navbar')
-
-    @php
-        $title = app()->view->getSections()['title'];
-        $nestedTitle = app()->view->getSections()['nestedTitle'] ?? null;
-    @endphp
 
     @include('components.shared.back-button', [
         'title' => $title,

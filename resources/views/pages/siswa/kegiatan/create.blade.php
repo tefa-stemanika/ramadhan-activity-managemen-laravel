@@ -38,13 +38,18 @@
                 <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="bg-white p-2 rounded-md"></textarea>
                 <p>@error('deskripsi') {{ $message }} @enderror</p>
             </div>
+            {{-- Tampilkan preview gambar di sini --}}
             <div class="flex flex-col gap-3 pt-4">
+                {{-- Tempat preview gambar --}}
+                <div id="preview-container" class="mt-3 hidden">
+                    <img id="preview-image" src="" alt="Preview Gambar" class="w-full h-auto aspect-auto rounded-md border">
+                </div>
                 <label for="foto" class="flex items-center justify-center gap-2 bg-white p-2 rounded-md text-sm font-medium cursor-pointer">
                     <img src="{{ asset('icons/prime_upload.svg') }}" width="24" height="24" alt="">
                     <p>Upload Photo</p>
                 </label>
-                <p>@error('foto') {{ $message }} @enderror</p>
-                <input type="file" id="foto" name="foto" class="hidden">
+                <input type="file" id="foto" name="foto" class="hidden" accept=".png, .jpg, .jpeg">
+                <p class="text-xs text-red-500">@error('foto') {{ $message }} @enderror</p>
             </div>
             <div class="flex items-center justify-end gap-4 pt-4">
                 <a href="{{ route('siswa.home') }}" class="bg-mist py-2 px-2.5 rounded text-white text-sm font-medium">Batal</a>
@@ -52,4 +57,24 @@
             </div>
         </form>
     </section>
+@endsection
+
+@section('scripts')
+<script>
+    document.getElementById('foto').addEventListener('change', function(event) {
+        const file = event.target.files[0]; // Ambil file yang dipilih
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Tampilkan gambar preview
+                const previewImage = document.getElementById('preview-image');
+                const previewContainer = document.getElementById('preview-container');
+                
+                previewImage.src = e.target.result;
+                previewContainer.classList.remove('hidden'); // Tampilkan container preview
+            };
+            reader.readAsDataURL(file); // Baca file sebagai data URL
+        }
+    });
+</script>
 @endsection
