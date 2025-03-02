@@ -4,7 +4,7 @@
 
 @section('main')
 <section>
-    <div class="grid grid-cols-1 gap-y-6 mx-[20px]">
+    <div class="grid grid-cols-1 gap-y-6">
         <div class="flex flex-col gap-y-2">
             <p class="text-sm font-bold ">Nis</p>
             <p class="text-sm text-gray-700 border-[0.5px] border-[#D9D9D9] bg-transparent rounded-[10px] py-2 px-3.5">{{ $siswa->nis }}</p>
