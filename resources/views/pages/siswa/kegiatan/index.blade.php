@@ -58,6 +58,7 @@
                 </tbody>
             </table>
         </div>
+        {{ $kegiatan->appends(request()->query())->links() }}
     </section>
 
     <div id="photoOverlay" class="hidden fixed z-50 top-0 left-0 w-full h-screen bg-black bg-opacity-70">

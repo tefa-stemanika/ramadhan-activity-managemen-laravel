@@ -23,7 +23,7 @@ class WalikelasController extends Controller
             $query->where('nama', 'like', "%$search%");
         }
 
-        $data = $query->paginate(20);
+        $data = $query->paginate(15);
 
         return view('pages.admin.walikelas.index', compact('data'));
     }

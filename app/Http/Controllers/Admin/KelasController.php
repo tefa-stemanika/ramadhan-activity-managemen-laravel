@@ -21,7 +21,7 @@ class KelasController extends Controller
             'data' => Kelas::orderBy('nama')->when($request->search, function ($q) use ($request) {
                 $q->where('kode', 'LIKE', '%' . $request->search . '%')
                     ->orWhere('nama', 'LIKE', '%' . $request->search . '%');
-            })->paginate(20)
+            })->paginate(15)
         ]);
     }
 

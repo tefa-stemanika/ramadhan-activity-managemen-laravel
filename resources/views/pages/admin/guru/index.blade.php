@@ -61,9 +61,9 @@
                     </tr>
                     @endforeach
                 </tbody>
-                {{ $guru->appends(request()->query())->links() }}
             </table>
         </div>
+        {{ $guru->appends(request()->query())->links() }}
     </section>
 @endsection
 

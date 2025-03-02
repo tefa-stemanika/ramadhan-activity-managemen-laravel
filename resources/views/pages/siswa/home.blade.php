@@ -1,7 +1,7 @@
 @extends('components.layouts.siswa.container')
 
 @section('main')
-    <section>
+    {{-- <section>
         <h1 class="text-lg font-bold">Assalamu’alaikum, {{ auth()->user()->Siswa->nama }}</h1>
         <time class="text-sm font-medium mt-1.5">{{ now()->translatedFormat('l, d F Y') }}</time>
         <div class="flex items-center gap-x-4 mt-2.5">
@@ -11,7 +11,7 @@
                 <p class="text-sm font-bold">Jadwal Sholat</p>
             </a>
         </div>
-    </section>
+    </section> --}}
 
     <section class="mt-20">
         <h2 class="text-sm font-bold">Berikut kegiatan terbarumu hari ini.</h2>
