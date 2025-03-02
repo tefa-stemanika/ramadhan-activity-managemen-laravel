@@ -1,5 +1,7 @@
 @extends('components.layouts.siswa.container')
 
+@section('title', 'Buat Kegiatan')
+
 @section('main')
     @php
         $jenisKegiatan = [
@@ -18,18 +20,7 @@
             'Penutupan',
         ];
     @endphp
-    <section class="mb-10">
-        <div class="flex gap-x-4 items-center">
-            <div class="flex gap-x-7 items-center">
-                <a href="{{ url()->previous() }}" class="flex items-center justify-center bg-primary size-7 rounded-lg">
-                    <img src="{{ asset('icons/chevron-left.svg') }}" alt="Prev Button" class="size-2.5">
-                </a>
-                <h2 class="text-black text-base font-bold">Buat Kegiatan</h2>
-            </div>
-        </div>
-    </section>
-
-    <section class="mt-11">
+    <section>
         <form action="{{ route('siswa.kegiatan.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-5 bg-primary/10 rounded-md py-10 px-5">
             @csrf
             @method("POST")

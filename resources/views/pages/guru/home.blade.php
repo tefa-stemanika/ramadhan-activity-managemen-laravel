@@ -4,7 +4,7 @@
 @section('show', false)
 
 @section('main')
-    <section>
+    <section class="mt-28">
         <h1 class="text-lg font-bold">Assalamu`alaikum, {{ $guru->nama }}</h1>
         <time class="text-sm font-medium mt-1.5">{{ now()->format('D, Y M d') }}</time>
         <div class="flex items-center gap-x-4 mt-2.5">

@@ -1,5 +1,7 @@
 @extends('components.layouts.siswa.container')
 
+@section('title', 'Profil')
+
 @section('main')
 <section>
     <div class="grid grid-cols-1 gap-y-6 mx-[20px]">
