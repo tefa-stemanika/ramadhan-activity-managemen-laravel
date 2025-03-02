@@ -15,12 +15,7 @@ export default {
                 warm: '#FE7C00',
                 tree: '#26DA24',
                 mist: '#777C7A'
-            },
-            spacing: {
-                10: "2rem",
-                15: "3rem",
-                20: "4rem",
-            },
+            }
         },
     },
     plugins: [],

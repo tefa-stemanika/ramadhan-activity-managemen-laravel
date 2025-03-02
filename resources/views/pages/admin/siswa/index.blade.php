@@ -65,9 +65,9 @@
                     </tr>
                     @endforeach
                 </tbody>
-                {{ $data->appends(request()->query())->links() }}
             </table>
         </div>
+        {{ $data->appends(request()->query())->links() }}
     </section>
 @endsection
 

@@ -20,7 +20,7 @@ class UserController extends Controller
             'data' => \App\Models\User::orderBy('username')->when($request->search, function ($q) use ($request) {
                 $q->where('username', 'LIKE', '%' . $request->search . '%')
                     ->orWhere('role', 'LIKE', '%' . $request->search . '%');
-            })->paginate(20),
+            })->paginate(15),
         ]);
     }
 

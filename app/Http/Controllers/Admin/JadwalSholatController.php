@@ -15,29 +15,12 @@ class JadwalSholatController extends Controller
      */
     public function index(Request $request)
     {
-        $query = JadwalSholat::query();
-
-        if ($request->has('search')) {
+        $data = JadwalSholat::when($request->search, function ($q) use ($request) {
             $parsedTanggal = Carbon::parse($request->search)->format('Y-m-d');
-            $query->whereDate('tanggal', 'like', "%$parsedTanggal%");
-        }
+            $q->whereDate('tanggal', 'like', "%$parsedTanggal%");
+        })->paginate(15);
 
-        $jadwal_sholat = $query->get()->map(function ($jadwal) {
-            return [
-                'id' => $jadwal->id,
-                'tanggal' => \Carbon\Carbon::parse($jadwal->tanggal)->format('d-m-Y'),
-                'imsak' => \Carbon\Carbon::parse($jadwal->imsak)->format('H:i'),
-                'subuh' => \Carbon\Carbon::parse($jadwal->subuh)->format('H:i'),
-                'terbit' => \Carbon\Carbon::parse($jadwal->terbit)->format('H:i'),
-                'dhuha' => \Carbon\Carbon::parse($jadwal->dhuha)->format('H:i'),
-                'dzuhur' => \Carbon\Carbon::parse($jadwal->dzuhur)->format('H:i'),
-                'ashar' => \Carbon\Carbon::parse($jadwal->ashar)->format('H:i'),
-                'maghrib' => \Carbon\Carbon::parse($jadwal->maghrib)->format('H:i'),
-                'isya' => \Carbon\Carbon::parse($jadwal->isya)->format('H:i'),
-            ];
-        });
-
-        return view('pages.admin.jadwal-sholat.index', compact('jadwal_sholat'));
+        return view('pages.admin.jadwal-sholat.index', compact('data'));
     }
 
 
