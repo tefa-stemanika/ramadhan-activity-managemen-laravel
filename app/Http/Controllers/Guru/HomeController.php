@@ -4,26 +4,34 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Kegiatan;
+use App\Models\Guru;
 
 class HomeController extends Controller
 {
     public function index() {
-        return view('pages.guru.home');
+        $guru = Guru::where('username', auth()->user()->username)->first();
+        return view('pages.guru.home', compact('guru'));
     }
 
-    public function charData() {
-        $data = [
-            ['kelas' => 'XII RPL 1', 'total_kegiatan' => 28],
-            ['kelas' => 'XI RPL 1', 'total_kegiatan' => 34],
-            ['kelas' => 'X PPLG 1', 'total_kegiatan' => 23],
-            ['kelas' => 'XII TJKT 1', 'total_kegiatan' => 26],
-            ['kelas' => 'XI TJKT 1', 'total_kegiatan' => 22]
-        ];
+    public function chartData() {
+       $guru = Guru::where('username', auth()->user()->username)->first();
 
-        return response()->json($data);
+        $data = Kegiatan::join('siswa', 'kegiatan.nis', '=', 'siswa.nis')
+        ->join('kelas', 'siswa.kode_kelas', '=', 'kelas.kode')
+        ->where('kelas.kode_guru', $guru->kode_guru)
+        ->select('kelas.nama as kelas') 
+        ->selectRaw('COUNT(*) as total_kegiatan')
+        ->groupBy('kelas.nama')
+        ->orderByDesc('total_kegiatan')
+        ->limit(5)
+        ->get();
+
+    return response()->json($data);
     }
 
     public function profile() {
-        return view('pages.guru.profile');
+        $guru = Guru::where('username', auth()->user()->username)->first();
+        return view('pages.guru.profile', compact('guru'));
     }
 }

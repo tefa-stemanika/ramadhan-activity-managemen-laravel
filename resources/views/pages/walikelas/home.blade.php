@@ -25,7 +25,6 @@
             fetch("{{ route('chart.data.siswa') }}")
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Data dari API:", data);
 
                     const labels = data.map(item => item.nama.split(" ")[0]);
                     const values = data.map(item => item.total_kegiatan);

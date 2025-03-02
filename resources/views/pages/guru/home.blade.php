@@ -2,7 +2,7 @@
 
 @section('main')
     <section>
-        <h1 class="text-lg font-bold">Assalamu`alaikum, User</h1>
+        <h1 class="text-lg font-bold">Assalamu`alaikum, {{ $guru->nama }}</h1>
         <time class="text-sm font-medium mt-1.5">{{ now()->format('D, Y M d') }}</time>
         <div class="flex items-center gap-x-4 mt-2.5">
             <a href="{{ route('guru.data.kelas') }}" class="flex items-center px-2.5 py-2  text-sm rounded bg-primary border border-primary text-white">Lihat Kelas</a>
@@ -25,7 +25,6 @@
             fetch("{{ route('chart.data.kelas') }}")
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Data dari API:", data);
 
                     const labels = data.map(item => item.kelas);
                     const values = data.map(item => item.total_kegiatan);
@@ -39,7 +38,7 @@
                         data: {
                             labels: labels,
                             datasets: [{
-                                label: "Jumlah Kegiatan",
+                                label: "Jumlah Kegiatan ",
                                 data: values,
                                 backgroundColor: backgroundColors,
                                 borderColor: backgroundColors.map(color => color.replace("0.7", "1")), 
