@@ -1,7 +1,77 @@
 @extends('components.layouts.siswa.container')
 
 @section('main')
-    {{-- <section>
+    @php
+        $jenisKegiatan = [
+            [
+                'jenis' => 'Kegiatan pembukaan',
+                'text' => 'Opening',
+                'class' => 'bg-[#046A38] text-white',
+            ],
+            [
+                'jenis' => 'Shalat Fardu',
+                'text' => 'Shalat Fardu',
+                'class' => 'bg-[#800000] text-white',
+            ],
+            [
+                'jenis' => 'Shalat Tarawih',
+                'text' => 'Tarawih',
+                'class' => 'bg-[#1A237E] text-white',
+            ],
+            [
+                'jenis' => 'Sahur bersama keluarga',
+                'text' => 'Sahur',
+                'class' => 'bg-[#26DA24] text-black',
+            ],
+            [
+                'jenis' => 'Buka puasa bersama keluarga',
+                'text' => 'Berbuka',
+                'class' => 'bg-[#FE7C00] text-black',
+            ],
+            [
+                'jenis' => 'Kajian islamiyah menjelang buka puasa',
+                'text' => 'Kajian',
+                'class' => 'bg-[#DCDCDC] text-black',
+            ],
+            [
+                'jenis' => 'Kajian islamiyah malam jumat',
+                'text' => "Kajian Jum'at",
+                'class' => 'bg-[#6B8E23] text-white',
+            ],
+            [
+                'jenis' => 'Tadarus Al-Quran',
+                'text' => 'Tadarus Quran',
+                'class' => 'bg-[#8B4513] text-white',
+            ],
+            [
+                'jenis' => 'Infaq Harian',
+                'text' => 'Infaq',
+                'class' => 'bg-[#FFDD44] text-black',
+            ],
+            [
+                'jenis' => 'Rantang Kanyaah',
+                'text' => 'Rantang Kanyaah',
+                'class' => 'bg-[#A8E6CF] text-black',
+            ],
+            [
+                'jenis' => 'Penulisan mushaf Al-Quran',
+                'text' => 'Mushaf Quran',
+                'class' => 'bg-[#4B0082] text-white',
+            ],
+            [
+                'jenis' => 'Ngobras',
+                'text' => 'Ngobras',
+                'class' => 'bg-[#F5E6CC] text-black',
+            ],
+            [
+                'jenis' => 'Penutupan',
+                'text' => 'Closing',
+                'class' => 'bg-[#40E0D0] text-black',
+            ]
+        ];
+    @endphp
+
+    <section>
         <h1 class="text-lg font-bold">Assalamu’alaikum, {{ auth()->user()->Siswa->nama }}</h1>
         <time class="text-sm font-medium mt-1.5">{{ now()->translatedFormat('l, d F Y') }}</time>
         <div class="flex items-center gap-x-4 mt-2.5">
@@ -11,16 +81,21 @@
                 <p class="text-sm font-bold">Jadwal Sholat</p>
             </a>
         </div>
-    </section> --}}
+    </section>
 
     <section class="mt-20">
         <h2 class="text-sm font-bold">Berikut kegiatan terbarumu hari ini.</h2>
         <div class="grid grid-cols-1 gap-3 mt-6">
             @foreach (auth()->user()->Siswa->Kegiatan()->whereDate('created_at', now())->latest()->get() as $item)
                 <div class="grid grid-cols-5 rounded-lg">
-                    <div class="flex items-center justify-center p-2.5 bg-warm rounded-l-lg">
-                        <p class="text-xs font-medium text-white">{{ $item->jenis_kegiatan }}</p>
-                    </div>
+                    @foreach ($jenisKegiatan as $j)
+                        @if ($j['jenis'] == $item->jenis_kegiatan)
+                            <div class="flex items-center justify-center p-2.5 {{ $j['class'] }} rounded-l-lg">
+                                <p class="text-xs font-medium text-center">{{ $item->jenis_kegiatan }}</p>
+                            </div>
+                        @endif
+                    @endforeach
+                        
                     <div class="grid grid-cols-1 col-span-4 p-5 bg-white border border-black/10 rounded-r-lg">
                         <div class="flex items-center justify-between">
                             <h3 class="text-sm font-semibold">{{ $item->jenis_kegiatan }}</h3>

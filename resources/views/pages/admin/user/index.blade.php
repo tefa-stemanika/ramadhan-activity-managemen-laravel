@@ -53,7 +53,7 @@
                                 <form action="{{ route('user.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
+                                    <button onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
                                 </form>
                             </td>
                         </tr>

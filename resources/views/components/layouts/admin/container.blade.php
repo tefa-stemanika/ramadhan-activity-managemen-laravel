@@ -52,14 +52,14 @@
         @yield('main')
     </main>
 
-    @include('notify::components.notify')
+    @include('components.shared.notifications.toast')
   @notifyJs
   @env('production')
       <script src="{{ asset('build/assets/main.js') }}"></script>
   @else
       @vite('resources/js/main.js')
   @endenv
-  <script>
+<script>
     feather.replace();
 </script>
   @yield('scripts')

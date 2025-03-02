@@ -14,7 +14,6 @@ class GuruSeeder extends Seeder
     {
         $data = [
             [
-                'id' => '1',
                 'kode' => 'guru1',
                 'nama' => 'guru 1',
                 'username' => 'guru1'

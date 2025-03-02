@@ -59,9 +59,9 @@ class WalikelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Walikelas $walas)
+    public function edit(Walikelas $walikelas)
     {
-        return view('pages.admin.walikelas.edit', compact('walas'));
+        return view('pages.admin.walikelas.edit', compact('walikelas'));
     }
 
     /**
@@ -79,9 +79,9 @@ class WalikelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Walikelas $walas)
+    public function destroy(Walikelas $walikelas)
     {
-        $walas->delete();
+        $walikelas->delete();
 
         notify()->success('Walikelas berhasil dihapus');
 

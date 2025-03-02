@@ -55,7 +55,7 @@
                             <form action="{{ route('guru.destroy', $g) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
+                                <button onclick="return confirm('Apakah Anda yakin ingin menghapus guru ini?')" type="submit" class="text-[#FF0000] text-sm font-medium">Hapus</button>
                             </form>
                         </td>
                     </tr>
